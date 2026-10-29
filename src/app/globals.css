@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------
+   Colour tokens
+   Each theme is designed on its own, not inverted: dark mode uses a
+   warm charcoal (not black), softer text and a lifted accent so it
+   keeps the same warmth as the light theme.
+   Selectors aren't tied to <html>, so any element can preview a theme
+   with data-theme="dark" (the type specimen page uses this).
+   All text pairs pass WCAG AA; see the specimen page for ratios.
+   ------------------------------------------------------------------ */
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f1e8; /* warm off-white paper */
+  --surface: #ece6da; /* cards, image placeholders */
+  --text: #1b1915; /* near-black ink */
+  --text-muted: #5c564c; /* supporting copy, 6.4:1 */
+  --rule: #d6cebf; /* hairlines (decorative) */
+  --accent: var(--accent-light);
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #151311; /* warm charcoal */
+  --surface: #1e1b18;
+  --text: #ece6da; /* paper colour, not pure white */
+  --text-muted: #a69e91; /* 7:1 */
+  --rule: #38332d;
+  --accent: var(--accent-dark);
+}
+
+/* Accent options. TEMPORARY: one is chosen in the specimen review and
+   the others are deleted. Each accent has a light and dark value; the
+   theme blocks above pick the right one via --accent. */
+[data-accent="red"] {
+  --accent-light: #b23a1e; /* signwriter vermilion, 5.3:1 */
+  --accent-dark: #f08466; /* 7.2:1 */
+}
+[data-accent="green"] {
+  --accent-light: #1f5c40; /* bottle green, 7:1 */
+  --accent-dark: #7cc39e; /* 9:1 */
+}
+[data-accent="blue"] {
+  --accent-light: #24438f; /* printer's ink blue, 8.2:1 */
+  --accent-dark: #94b0ee; /* 8.6:1 */
+}
+
+/* ------------------------------------------------------------------
+   Tailwind theme: exposes the tokens as utilities, e.g. bg-bg,
+   text-muted, border-rule, text-accent, font-display, text-display.
+   ------------------------------------------------------------------ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+
+  --font-sans: var(--font-text-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-serif, Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* Fluid type scale: each size grows smoothly from phone to desktop. */
+  --text-display: clamp(2.75rem, 1.4rem + 6vw, 7rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.025em;
+  --text-title: clamp(2.25rem, 1.5rem + 3.4vw, 4.5rem);
+  --text-title--line-height: 1.02;
+  --text-title--letter-spacing: -0.02em;
+  --text-heading: clamp(1.75rem, 1.35rem + 1.8vw, 3rem);
+  --text-heading--line-height: 1.08;
+  --text-heading--letter-spacing: -0.015em;
+  --text-subheading: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --text-subheading--line-height: 1.2;
+  --text-lede: clamp(1.1875rem, 1.1rem + 0.4vw, 1.4375rem);
+  --text-lede--line-height: 1.5;
+
+  /* Small uppercase labels (years, "Case study", facts row). */
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------
+   Base styles
+   ------------------------------------------------------------------ */
+@layer base {
+  html {
+    background-color: var(--bg);
+    color: var(--text);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-feature-settings: "ss01"; /* Inter: open digits, easier to read */
+  }
+
+  /* Headlines in the display face use optical sizing automatically. */
+  .font-display {
+    font-optical-sizing: auto;
+    font-weight: 400;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--bg);
+  }
+
+  /* One clear, consistent focus ring for keyboard users. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Links in running text: underline in accent, thickens on hover. */
+  .prose-link,
+  .prose a {
+    text-decoration-line: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-thickness 150ms;
+  }
+  .prose-link:hover,
+  .prose a:hover {
+    text-decoration-thickness: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Smooth colour change when the theme toggle is pressed. The class is
+   added for a moment by ThemeToggle, so normal hovers aren't slowed
+   down, and it's skipped entirely for reduced-motion visitors. */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition:
+      background-color 300ms ease,
+      color 300ms ease,
+      border-color 300ms ease,
+      fill 300ms ease !important;
+  }
 }

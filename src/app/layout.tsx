@@ -1,29 +1,44 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SkipLink } from "@/components/SkipLink";
+import { ThemeScript } from "@/components/ThemeScript";
+import { site } from "@/lib/site";
+import { displayFont, textFont } from "./fonts";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "James Kelly — Product design leader",
-  description: "Portfolio of James Kelly, product design leader.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} — ${site.role}`,
+    template: `%s — ${site.name}`,
+  },
+  description: `Portfolio of ${site.name}, ${site.role.toLowerCase()}.`,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
+    // data-theme="light" is only the server default; ThemeScript replaces it
+    // before paint, hence suppressHydrationWarning.
+    // data-accent is TEMPORARY until the accent colour is chosen.
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="en-IE"
+      data-theme="light"
+      data-accent="red"
+      suppressHydrationWarning
+      className={`${textFont.variable} ${displayFont.variable} antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <head>
+        <ThemeScript />
+      </head>
+      <body className="flex min-h-dvh flex-col">
+        <SkipLink />
+        <SiteHeader />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
