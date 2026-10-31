@@ -3,8 +3,8 @@ export const site = {
   name: "James Kelly",
   role: "Product design leader",
   url: "https://jameskelly.ie",
-  email: "hello@example.com", // PLACEHOLDER
-  linkedin: "https://www.linkedin.com/in/PLACEHOLDER", // PLACEHOLDER
+  email: "hello@jameskelly.ie",
+  linkedin: "https://www.linkedin.com/in/james-kelly-ux/",
   cv: "/cv-placeholder.pdf", // PLACEHOLDER: drop the real PDF in /public
   location: "Co. Carlow, Ireland",
   // Default description for search results and link previews.
