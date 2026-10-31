@@ -17,6 +17,7 @@
   --text: #1b1915; /* near-black ink */
   --text-muted: #5c564c; /* supporting copy, 6.4:1 */
   --rule: #d6cebf; /* hairlines (decorative) */
+  --accent: #543afd; /* violet, 5.5:1 */
 }
 
 [data-theme="dark"] {
@@ -26,15 +27,11 @@
   --text: #ece6da; /* paper colour, not pure white */
   --text-muted: #a69e91; /* 7:1 */
   --rule: #38332d;
+  --accent: #9b8cff; /* softer violet; the light one is too dim here. 6.7:1 */
 }
 
-/* Accent: deliberately monochrome for now, so it's the ink colour.
-   To introduce a colour later, set --accent in each theme block above
-   (check it against --bg for 4.5:1 contrast). Focus rings, link
-   underlines and text selection all follow it. */
-[data-theme] {
-  --accent: var(--text);
-}
+/* The accent is used sparingly: link underlines, hover states, the
+   focus ring and text selection. Headlines and body text stay ink. */
 
 /* ------------------------------------------------------------------
    Tailwind theme: exposes the tokens as utilities, e.g. bg-bg,
@@ -112,19 +109,21 @@
     border-radius: 2px;
   }
 
-  /* Links in running text: fine underline that thickens on hover. */
+  /* Links in running text: accent underline; text turns accent on hover. */
   .prose-link,
   .prose a {
     text-decoration-line: underline;
-    text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    text-decoration-color: var(--accent);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.2em;
-    transition: text-decoration-thickness 150ms;
+    transition:
+      color 150ms,
+      text-decoration-thickness 150ms;
   }
   .prose-link:hover,
   .prose a:hover {
+    color: var(--accent);
     text-decoration-thickness: 2px;
-    text-decoration-color: var(--accent);
   }
 }
 

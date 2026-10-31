@@ -10,17 +10,23 @@ export function SiteFooter() {
         </p>
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           <li>
-            <a href={`mailto:${site.email}`} className="hover:text-text">
+            <a
+              href={`mailto:${site.email}`}
+              className="transition-colors hover:text-accent"
+            >
               Email
             </a>
           </li>
           <li>
-            <a href={site.linkedin} className="hover:text-text">
+            <a
+              href={site.linkedin}
+              className="transition-colors hover:text-accent"
+            >
               LinkedIn
             </a>
           </li>
           <li>
-            <a href={site.cv} className="hover:text-text">
+            <a href={site.cv} className="transition-colors hover:text-accent">
               CV <span className="sr-only">(PDF)</span>
             </a>
           </li>

@@ -41,8 +41,13 @@ const scale = [
 
 // Kept in sync with globals.css by hand; this page is temporary.
 const palettes = {
-  light: { bg: "#f5f1e8", text: "#1b1915", muted: "#5c564c" },
-  dark: { bg: "#151311", text: "#ece6da", muted: "#a69e91" },
+  light: {
+    bg: "#f5f1e8",
+    text: "#1b1915",
+    muted: "#5c564c",
+    accent: "#543afd",
+  },
+  dark: { bg: "#151311", text: "#ece6da", muted: "#a69e91", accent: "#9b8cff" },
 } as const;
 
 function luminance(hex: string) {
@@ -114,7 +119,8 @@ export default function TypeSpecimen() {
                 </span>
                 <span className="text-muted">
                   Text {contrast(palettes[mode].text, palettes[mode].bg)}:1 ·
-                  Muted {contrast(palettes[mode].muted, palettes[mode].bg)}:1
+                  Muted {contrast(palettes[mode].muted, palettes[mode].bg)}:1 ·
+                  Accent {contrast(palettes[mode].accent, palettes[mode].bg)}:1
                 </span>
               </div>
             </div>

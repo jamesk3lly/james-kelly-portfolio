@@ -83,7 +83,7 @@ export function ThemeToggle() {
       onClick={toggle}
       aria-label={`Switch to ${next} mode`}
       title={`Switch to ${next} mode`}
-      className="group -m-2 inline-flex size-11 items-center justify-center rounded-full text-text transition-colors hover:bg-surface"
+      className="group -m-2 inline-flex size-11 items-center justify-center rounded-full text-text transition-colors hover:text-accent"
     >
       {/* Shows the CURRENT mode: sun in light, moon in dark. */}
       <SunIcon className="size-5 in-data-[theme=dark]:hidden" />

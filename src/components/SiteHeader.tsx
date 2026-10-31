@@ -9,7 +9,7 @@ export function SiteHeader() {
       <Container className="flex items-center justify-between gap-6 py-5 sm:py-7">
         <Link
           href="/"
-          className="font-display text-xl tracking-tight hover:underline hover:decoration-1 hover:underline-offset-4 sm:text-2xl"
+          className="font-display text-xl tracking-tight transition-colors hover:text-accent sm:text-2xl"
         >
           {site.name}
         </Link>
@@ -21,7 +21,7 @@ export function SiteHeader() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="hover:underline hover:decoration-1 hover:underline-offset-4"
+                    className="transition-colors hover:text-accent"
                   >
                     {item.label}
                   </Link>

@@ -138,7 +138,7 @@ function MoreWork({ previous, next }: { previous: Work; next: Work }) {
               {label}
               {label === "Next" && <span aria-hidden="true"> →</span>}
             </span>
-            <span className="mt-3 block font-display text-subheading text-balance decoration-1 underline-offset-[0.18em] group-hover:underline">
+            <span className="mt-3 block font-display text-subheading text-balance decoration-accent decoration-1 underline-offset-[0.18em] group-hover:underline">
               {work.title}
             </span>
           </Link>

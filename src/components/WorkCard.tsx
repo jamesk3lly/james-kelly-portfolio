@@ -42,7 +42,7 @@ export function WorkCard({
             everything inside the link. */}
         <Link
           href={`/work/${work.slug}`}
-          className="decoration-1 underline-offset-[0.18em] group-hover:underline after:absolute after:inset-0"
+          className="decoration-accent decoration-1 underline-offset-[0.18em] group-hover:underline after:absolute after:inset-0"
         >
           {work.title}
         </Link>
