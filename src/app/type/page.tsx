@@ -40,12 +40,10 @@ const scale = [
 ];
 
 // Kept in sync with globals.css by hand; this page is temporary.
-const paper = { light: "#f5f1e8", dark: "#151311" };
-const accents = [
-  { id: "red", name: "Signwriter red", light: "#b23a1e", dark: "#f08466" },
-  { id: "green", name: "Bottle green", light: "#1f5c40", dark: "#7cc39e" },
-  { id: "blue", name: "Ink blue", light: "#24438f", dark: "#94b0ee" },
-] as const;
+const palettes = {
+  light: { bg: "#f5f1e8", text: "#1b1915", muted: "#5c564c" },
+  dark: { bg: "#151311", text: "#ece6da", muted: "#a69e91" },
+} as const;
 
 function luminance(hex: string) {
   const [r, g, b] = [1, 3, 5].map((i) => {
@@ -86,45 +84,39 @@ export default function TypeSpecimen() {
         </dl>
       </section>
 
-      <section aria-labelledby="accents" className="mt-24">
-        <h2 id="accents" className="text-label text-muted uppercase">
-          Accent options, light and dark
+      <section aria-labelledby="themes" className="mt-24">
+        <h2 id="themes" className="text-label text-muted uppercase">
+          Both themes
         </h2>
-        <div className="mt-6 grid gap-6">
-          {accents.map((a) => (
-            <div key={a.id} className="grid gap-6 md:grid-cols-2">
-              {(["light", "dark"] as const).map((mode) => (
-                <div
-                  key={mode}
-                  data-theme={mode}
-                  data-accent={a.id}
-                  className="rounded-sm border border-rule bg-bg p-7 text-text sm:p-9"
-                >
-                  <p className="text-label text-accent uppercase">
-                    2024 · Case study
-                  </p>
-                  <p className="mt-3 font-display text-subheading">
-                    {a.name}: shaped where AI shows up in{" "}
-                    <em className="text-accent">Workday</em>
-                  </p>
-                  <p className="mt-3 text-muted">
-                    Supporting text with a{" "}
-                    <a href="#accents" className="prose-link text-text">
-                      link in running text
-                    </a>
-                    .
-                  </p>
-                  <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
-                    <span className="rounded-sm px-2 py-1 outline-2 outline-offset-3 outline-accent outline-solid">
-                      Focus ring
-                    </span>
-                    <span className="text-muted">
-                      {mode === "light" ? "Light" : "Dark"} · contrast{" "}
-                      {contrast(a[mode], paper[mode])}:1
-                    </span>
-                  </div>
-                </div>
-              ))}
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          {(["light", "dark"] as const).map((mode) => (
+            <div
+              key={mode}
+              data-theme={mode}
+              className="rounded-sm border border-rule bg-bg p-7 text-text sm:p-9"
+            >
+              <p className="text-label text-muted uppercase">
+                2024 · Case study
+              </p>
+              <p className="mt-3 font-display text-subheading">
+                Shaped where AI shows up in <em>Workday</em>
+              </p>
+              <p className="mt-3 text-muted">
+                Supporting text with a{" "}
+                <a href="#themes" className="prose-link text-text">
+                  link in running text
+                </a>
+                .
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
+                <span className="rounded-sm px-2 py-1 outline-2 outline-offset-3 outline-accent outline-solid">
+                  Focus ring
+                </span>
+                <span className="text-muted">
+                  Text {contrast(palettes[mode].text, palettes[mode].bg)}:1 ·
+                  Muted {contrast(palettes[mode].muted, palettes[mode].bg)}:1
+                </span>
+              </div>
             </div>
           ))}
         </div>

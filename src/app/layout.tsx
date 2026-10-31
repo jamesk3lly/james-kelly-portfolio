@@ -20,11 +20,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // data-theme="light" is only the server default; ThemeScript replaces it
     // before paint, hence suppressHydrationWarning.
-    // data-accent is TEMPORARY until the accent colour is chosen.
     <html
       lang="en-IE"
       data-theme="light"
-      data-accent="red"
       suppressHydrationWarning
       className={`${textFont.variable} ${displayFont.variable} antialiased`}
     >
