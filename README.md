@@ -36,6 +36,8 @@ Then open http://localhost:3000.
 
 Copy `content/work/example-case-study`, rename the folder (it becomes the URL) and follow the notes at the top of its `index.mdx`. Set `draft: true` to hide a project while you work on it.
 
+Optional: add a `decision` line to a project's `meta` (one sentence on the key decision you made) and it appears as "The call" under the headline. Leave it out and nothing shows. Projects are numbered 01, 02… on the home page in `order`.
+
 ## Placeholders to replace
 
 - [ ] Hero statement and supporting line (`src/content/home.ts`)
