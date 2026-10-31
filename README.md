@@ -41,8 +41,8 @@ Optional: add a `decision` line to a project's `meta` (one sentence on the key d
 ## Placeholders to replace
 
 - [ ] Hero supporting line (`src/content/home.ts`)
-- [ ] Projects in `content/work/` (copy, years, images, alt text)
-- [ ] About page copy, dates and photos (`src/content/about/`)
+- [ ] Projects in `content/work/` (copy, images, alt text; years still 20XX on the example and AI in Workday)
+- [ ] About page intro, bio, principles and photos (`src/content/about/`); career and education are filled in from the CV
 - [ ] Irish Type project link (`src/content/about/index.ts`)
 - [ ] Lettering mark SVG (`src/components/LetteringSlot.tsx`)
 - [ ] Final display serif (`src/app/fonts.ts`), then update `src/lib/og-fonts.ts` so the share image and icons match

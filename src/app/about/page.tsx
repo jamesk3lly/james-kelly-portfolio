@@ -3,7 +3,15 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { Container } from "@/components/Container";
 import { ExternalLink } from "@/components/ExternalLink";
-import { bio, intro, irishType, principles, timeline } from "@/content/about";
+import {
+  bio,
+  education,
+  intro,
+  irishType,
+  principles,
+  timeline,
+  training,
+} from "@/content/about";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -99,6 +107,41 @@ export default function AboutPage() {
               </li>
             ))}
           </ol>
+        </Section>
+
+        <Section id="education" label="Education">
+          <ol className="divide-y divide-rule border-y border-rule">
+            {education.map((e) => (
+              <li
+                key={e.title}
+                className="grid gap-2 py-6 sm:grid-cols-[9rem_1fr] sm:gap-8"
+              >
+                <p className="text-[0.9375rem] text-muted tabular-nums">
+                  {e.years}
+                </p>
+                <div>
+                  <h3 className="font-display text-subheading text-balance">
+                    {e.title}
+                  </h3>
+                  <p className="mt-1">{e.place}</p>
+                  {e.note && (
+                    <p className="mt-2 max-w-xl text-[0.9375rem] text-muted">
+                      {e.note}
+                    </p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h3 className="mt-12 text-label text-muted uppercase">Training</h3>
+          <ul className="mt-4 grid gap-x-10 gap-y-2 sm:grid-cols-2">
+            {training.map((t) => (
+              <li key={t} className="text-[0.9375rem]">
+                {t}
+              </li>
+            ))}
+          </ul>
         </Section>
 
         <Section id="irish-type" label="Lettering">

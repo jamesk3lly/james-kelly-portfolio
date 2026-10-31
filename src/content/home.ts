@@ -3,15 +3,15 @@
 export const hero = {
   // The positioning statement. Keep it to roughly 6–12 words. It's also
   // used on the link-preview image (src/app/opengraph-image.tsx).
-  statement: "I lead design teams that make complex products feel simple.",
+  statement: "I’m James, a product designer and design manager in Ireland.",
   // PLACEHOLDER: one or two sentences of support.
   supporting:
-    "Product design leader with twenty years in the craft and five leading teams. I help organisations decide where AI belongs in their products, and build the systems that make it work.",
+    "Twenty years designing enterprise software, the last several leading teams. Currently thinking a lot about where AI genuinely helps products.",
 };
 
 export const facts = [
-  { label: "Currently", value: "UX/Product Design Manager, Workday" },
-  { label: "Previously", value: "Diligent, eir" },
+  { label: "Currently", value: "Product Design Manager, Workday" },
+  { label: "Previously", value: "Diligent, eir, Threesixty" },
   { label: "Experience", value: "20+ years, 5 leading teams" },
   { label: "Based", value: "Co. Carlow, Ireland" },
 ];

@@ -1,5 +1,5 @@
 // About page copy in one place. Anything marked PLACEHOLDER needs real copy.
-// Facts taken from the brief are filled in; dates are "20XX" until known.
+// Career, education and training are taken from the 2026 CV.
 
 import irishType1 from "./irish-type-1.jpg";
 import irishType2 from "./irish-type-2.jpg";
@@ -14,7 +14,7 @@ export const intro = {
 // set larger as an introduction.
 export const bio = [
   "I've worked in product design for more than twenty years: seventeen as a designer, and the last five leading teams.",
-  "Placeholder. Today I'm a UX/Product Design Manager at Workday, leading designers across several product areas, and helping shape where AI shows up in the product and how it behaves.",
+  "Placeholder. Today I'm a Product Design Manager at Workday, leading designers across several product areas, and helping shape where AI shows up in the product and how it behaves.",
   "Placeholder. Before that I built a design system from scratch at eir, and was a key contributor to the design systems at Diligent and Workday. Systems thinking runs through everything I do.",
   "Placeholder. I live in Co. Carlow, Ireland. Outside work I document Irish shopfront lettering.",
 ];
@@ -39,32 +39,65 @@ export const principles = [
   },
 ];
 
-// Career timeline, newest first. PLACEHOLDER: dates, titles and notes.
+// Career timeline, newest first (from the CV).
 export const timeline = [
   {
-    years: "20XX–now",
-    role: "UX/Product Design Manager",
+    years: "2021–now",
+    role: "Product Design Manager",
     company: "Workday",
-    note: "Leading a team of designers across several product areas; shaping where AI is used in the product.",
+    note: "Leading UX across three product teams (Learning, Help, and Journeys & Onboarding) with seven designers in Europe and San Francisco. Each team has its own AI roadmap, which I support on strategy and leadership.",
   },
   {
-    years: "20XX–20XX",
-    role: "Placeholder role",
+    years: "2021",
+    role: "Lead Product Designer",
     company: "Diligent",
-    note: "Key contributor to the design system.",
+    note: "Lead designer across two products in the Finance and Org Management spaces, in a UX org of more than 50 people.",
   },
   {
-    years: "20XX–20XX",
-    role: "Placeholder role",
+    years: "2020–2021",
+    role: "Lead UX Designer",
     company: "eir",
-    note: "Built the design system from scratch.",
+    note: "Led UX, research and usability testing across eir's digital platforms, raised accessibility standards, and used A/B testing to lift transactions and revenue by 14%.",
   },
   {
-    years: "20XX–20XX",
-    role: "Placeholder role",
-    company: "Placeholder company",
-    note: "Placeholder. Earlier roles can be grouped into one line if you prefer.",
+    years: "2005–2020",
+    role: "Design Lead",
+    company: "Threesixty",
+    note: "Led a team of six designers and developers on web, app and digital product work, from a travel booking system to a data management platform for a multinational.",
   },
+];
+
+// Education and training, newest first (from the CV).
+export const education = [
+  {
+    years: "2023–2024",
+    title: "Postgraduate Certificate in Leadership & Team Enablement",
+    place: "Technological University Dublin",
+  },
+  {
+    years: "2021–2022",
+    title: "Postgraduate Certificate in Digital Leadership & Transformation",
+    place: "Technological University Dublin",
+  },
+  {
+    years: "2018–2020",
+    title: "Higher Diploma in Interaction Design and User Experience",
+    place: "Dublin City University",
+    note: "Final research project on how digital typography influences emotion and trust.",
+  },
+  {
+    years: "2001–2004",
+    title: "Design and Visual Communications",
+    place: "Waterford Institute of Technology",
+  },
+];
+
+export const training = [
+  "Leading AI Strategy, Trinity College Dublin",
+  "Accessibility for All, Interaction Design Foundation",
+  "Google UX Design Certificate",
+  "Usability Testing, Interaction Design Foundation",
+  "Design Thinking, Interaction Design Foundation",
 ];
 
 export const irishType = {
