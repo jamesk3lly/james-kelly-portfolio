@@ -13,7 +13,16 @@ export const metadata: Metadata = {
     default: `${site.name} — ${site.role}`,
     template: `%s — ${site.name}`,
   },
-  description: `Portfolio of ${site.name}, ${site.role.toLowerCase()}.`,
+  description: site.description,
+  authors: [{ name: site.name, url: site.url }],
+  // Defaults for link previews; pages add their own title and description.
+  // The share image comes from opengraph-image.tsx.
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    locale: "en_IE",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

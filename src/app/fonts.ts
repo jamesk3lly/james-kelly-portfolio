@@ -18,11 +18,15 @@ export const textFont = Inter({
 
 // Display face: hero, page titles, section headings, card headlines.
 // TEMPORARY stand-in until James chooses the final serif.
+//
+// Performance: only the one weight the site uses (400, upright) is loaded.
+// The headline is the largest thing on each page, so its font file size
+// directly affects the Lighthouse score. Loading italics or extra variable
+// axes here roughly quadrupled the download. Keep the final serif lean too.
 export const displayFont = Newsreader({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  // Optical size lets large headlines use shapes drawn for display sizes.
-  axes: ["opsz"],
+  weight: "400",
+  style: "normal",
   variable: "--font-display-face",
   display: "swap",
 });

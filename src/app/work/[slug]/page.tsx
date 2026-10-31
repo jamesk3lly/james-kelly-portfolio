@@ -17,9 +17,8 @@ export async function generateStaticParams() {
 async function getPublished(slug: string) {
   const mod = await loadWork(slug);
   // Unknown folders and drafts show the 404 page. (Cache Components doesn't
-  // allow `dynamicParams = false`, so this check does that job.) The status
-  // code stays 200 because the site shell has already been sent, but Next
-  // adds a noindex tag so search engines ignore it.
+  // allow `dynamicParams = false`, so this check does that job.) Production
+  // returns a 404 status; the dev server may report 200.
   if (!mod || mod.meta.draft) notFound();
   return mod;
 }
@@ -32,7 +31,11 @@ export async function generateMetadata(
   return {
     title: meta.project,
     description: meta.summary,
+    // Replaces the site-wide openGraph defaults, so they're repeated here.
     openGraph: {
+      type: "article",
+      siteName: "James Kelly",
+      locale: "en_IE",
       title: meta.title,
       description: meta.summary,
       images: [{ url: meta.cover.src, alt: meta.coverAlt }],

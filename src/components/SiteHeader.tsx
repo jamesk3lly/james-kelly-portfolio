@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { site } from "@/lib/site";
 import { Container } from "./Container";
+import { NavLinks } from "./NavLinks";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function SiteHeader() {
@@ -16,18 +17,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-5 sm:gap-8">
           <nav aria-label="Main">
-            <ul className="flex items-center gap-5 text-[0.9375rem] sm:gap-8">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="transition-colors hover:text-accent"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <NavLinks />
           </nav>
           <ThemeToggle />
         </div>
