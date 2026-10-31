@@ -1,19 +1,98 @@
-{/* PLACEHOLDER CONTENT: replace the meta values and body with real copy. */}
+{/*
+EXAMPLE CASE STUDY: copy this whole folder to start a real one.
+
+1. Duplicate the folder and rename it. The folder name becomes the URL:
+   content/work/my-project → jameskelly.ie/work/my-project
+2. Replace the images in the folder with your own (JPG or PNG; around
+   2400px wide for full-width images is plenty).
+3. Fill in `meta` below. It drives the home page card and the header.
+4. Write the body in Markdown, using the components shown below.
+
+Everything in here is placeholder copy.
+*/}
 
 import cover from "./cover.jpg";
+import overview from "./overview.jpg";
+import before from "./before.jpg";
+import after from "./after.jpg";
+import detail from "./detail.jpg";
 
 export const meta = {
+  // Outcome headline: what changed, not the project name.
   title: "Outcome headline: say what changed, not what the project was called",
+  // Short name, used in the page title and the label above the headline.
   project: "Example case study",
   year: "20XX",
-  role: "Placeholder role",
-  team: "Placeholder team",
+  role: "Design manager",
+  team: "2 designers, 1 researcher, 6 engineers",
+  // One sentence: shown on the home page card and at the top of the page.
   summary:
     "Placeholder. One sentence on the problem, what you did and what changed as a result.",
   cover,
-  coverAlt: "Placeholder cover image for Example case study.",
+  coverAlt: "Placeholder cover image for the example case study.",
+  // "case-study" for a full write-up, "note" for a short one.
   type: "case-study",
+  // Position on the home page (lower comes first).
   order: 1,
+  // Set to true to hide this project from the site while you work on it.
+  draft: false,
 };
 
-Placeholder body. The full write-up goes here.
+## Context
+
+Placeholder. Set the scene in two or three short paragraphs: the company, the product, the people using it, and why this work mattered at that moment. Keep it to what a hiring manager needs to follow the rest of the story.
+
+Paragraphs are just plain text separated by a blank line. You can use **bold** for emphasis, and links work like [this one to the About page](/about) or [an external site](https://example.com).
+
+<FullImage
+  src={overview}
+  alt="Placeholder: describe what this overview shows, e.g. the main dashboard after the redesign."
+  caption="A caption sits under the image. Use it to point out what to look at."
+/>
+
+## The problem
+
+Placeholder. What was wrong, for whom, and how did you know? Evidence beats adjectives: a research finding, a metric, a quote from a customer.
+
+- Lists are written with a dash at the start of each line
+- Keep each point short
+- Three or four points is usually enough
+
+<PullQuote cite="Placeholder name, role">
+  A pull quote for the line that sums up the problem or the turning point.
+</PullQuote>
+
+## What I did
+
+Placeholder. This is the heart of the case study. Focus on your decisions and leadership: how you framed the problem, who you brought in, what you tried, what you threw away and why.
+
+### A sub-heading for a phase of the work
+
+Use a sub-heading with three hashes when this section needs breaking up, for example into research, exploration and delivery.
+
+<ImagePair
+  images={[
+    { src: before, alt: "Placeholder: the screen before the change." },
+    { src: after, alt: "Placeholder: the same screen after the change." },
+  ]}
+  caption="Two images side by side, good for before and after. They stack on phones."
+/>
+
+### Another phase
+
+Placeholder. A detail image stays within the text column, which suits close-ups of a component or a single interaction.
+
+<Figure
+  src={detail}
+  alt="Placeholder: a close-up of one component."
+  caption="A figure in the text column, with its own caption."
+/>
+
+> A plain Markdown quote (a line starting with ">") gives a quieter quote within the text.
+
+## Outcome
+
+Placeholder. What changed, with numbers where you have them, and what you'd do differently. End on the impact on the business, the product or the team.
+
+1. Numbered lists start each line with a number and a full stop
+2. Useful for results or steps in order

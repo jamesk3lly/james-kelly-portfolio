@@ -38,7 +38,7 @@ const WORK_DIR = path.join(process.cwd(), "content", "work");
 
 // Folder names are read synchronously so Next can include the result in
 // the static build (see "Predictable values" in the caching docs).
-function listSlugs(): string[] {
+export function getWorkSlugs(): string[] {
   return fs
     .readdirSync(WORK_DIR, { withFileTypes: true })
     .filter((d) => d.isDirectory() && !d.name.startsWith("_"))
@@ -46,18 +46,36 @@ function listSlugs(): string[] {
     .map((d) => d.name);
 }
 
-/** Loads one project's MDX module (its content and meta). */
-export async function loadWork(slug: string): Promise<WorkModule> {
+/**
+ * Loads one project's MDX module (its content and meta). Returns null for
+ * an unknown slug, so the page can show a 404.
+ */
+export async function loadWork(slug: string): Promise<WorkModule | null> {
+  if (!getWorkSlugs().includes(slug)) return null;
   return import(`../../content/work/${slug}/index.mdx`);
 }
 
 /** All published projects, in home page order. */
 export async function getAllWork(): Promise<Work[]> {
   const items = await Promise.all(
-    listSlugs().map(async (slug) => ({
+    getWorkSlugs().map(async (slug) => ({
       slug,
-      ...(await loadWork(slug)).meta,
+      ...(await loadWork(slug))!.meta,
     })),
   );
   return items.filter((w) => !w.draft).sort((a, b) => a.order - b.order);
+}
+
+/**
+ * The projects before and after this one in home page order, wrapping
+ * around so every page has both links.
+ */
+export async function getAdjacentWork(slug: string) {
+  const all = await getAllWork();
+  const i = all.findIndex((w) => w.slug === slug);
+  if (i < 0 || all.length < 2) return { previous: null, next: null };
+  return {
+    previous: all[(i - 1 + all.length) % all.length],
+    next: all[(i + 1) % all.length],
+  };
 }

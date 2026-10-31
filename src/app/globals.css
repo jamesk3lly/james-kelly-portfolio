@@ -194,3 +194,43 @@
 [data-theme="dark"] .media-img {
   filter: brightness(0.88);
 }
+
+/* ------------------------------------------------------------------
+   Case study body layout
+   Text sits in a comfortable reading column (about 70 characters).
+   .wide (pull quotes) extends a little beyond it; .bleed (full images,
+   image pairs) uses the full page width.
+   ------------------------------------------------------------------ */
+.case-body {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(0, 1fr)
+    [wide-start] minmax(0, 7rem)
+    [content-start] minmax(0, 42rem)
+    [content-end] minmax(0, 7rem)
+    [wide-end] minmax(0, 1fr)
+    [full-end];
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+.case-body > * {
+  grid-column: content;
+}
+.case-body > .wide {
+  grid-column: wide;
+}
+.case-body > .bleed {
+  grid-column: full;
+}
+
+/* Pull quote marks: the opening mark hangs into the margin so the text
+   edge stays aligned with the column. */
+.pull-quote > :first-child::before {
+  content: "\201C";
+  display: inline-block;
+  width: 0.45em;
+  margin-left: -0.45em;
+}
+.pull-quote > :last-child::after {
+  content: "\201D";
+}
