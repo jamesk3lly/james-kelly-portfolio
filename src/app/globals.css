@@ -143,3 +143,54 @@
       fill 300ms ease !important;
   }
 }
+
+/* ------------------------------------------------------------------
+   Hero headline reveal (see HeroHeadline.tsx)
+   Each word is clipped by .hero-mask and rises into view; words on the
+   same line share a delay, so the headline appears line by line.
+   ------------------------------------------------------------------ */
+.hero-mask {
+  display: inline-block;
+  overflow: hidden;
+  /* Room for descenders and accents inside the clip. */
+  padding-block: 0.08em 0.14em;
+  margin-block: -0.08em -0.14em;
+  vertical-align: top;
+}
+.hero-word {
+  display: inline-block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-word {
+    animation: hero-rise 1100ms var(--ease-out-quint) both;
+    animation-delay: calc(150ms + var(--line, 0) * 140ms);
+  }
+}
+/* Supporting line, facts row and lettering mark fade in as the
+   headline settles. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-fade {
+    animation: hero-fade 900ms ease-out both;
+    animation-delay: 650ms;
+  }
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes hero-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Photos and screenshots: slightly dimmed in dark mode so bright images
+   don't glare against the charcoal background. */
+[data-theme="dark"] .media-img {
+  filter: brightness(0.88);
+}
