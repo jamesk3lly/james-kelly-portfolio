@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { Container } from "./Container";
+import { ExternalLink } from "./ExternalLink";
 
 export function SiteFooter() {
   return (
@@ -18,17 +19,20 @@ export function SiteFooter() {
             </a>
           </li>
           <li>
-            <a
+            <ExternalLink
               href={site.linkedin}
               className="transition-colors hover:text-accent"
             >
               LinkedIn
-            </a>
+            </ExternalLink>
           </li>
           <li>
-            <a href={site.cv} className="transition-colors hover:text-accent">
-              CV <span className="sr-only">(PDF)</span>
-            </a>
+            <ExternalLink
+              href={site.cv}
+              className="transition-colors hover:text-accent"
+            >
+              CV<span className="sr-only"> (PDF)</span>
+            </ExternalLink>
           </li>
         </ul>
       </Container>

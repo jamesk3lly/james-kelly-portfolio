@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { Container } from "@/components/Container";
+import { ExternalLink } from "@/components/ExternalLink";
 import { bio, intro, irishType, principles, timeline } from "@/content/about";
 import { site } from "@/lib/site";
 
@@ -108,9 +109,9 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="mt-6">
-            <a href={irishType.link.href} className="prose-link">
+            <ExternalLink href={irishType.link.href} className="prose-link">
               {irishType.link.label}
-            </a>
+            </ExternalLink>
           </p>
         </Section>
       </div>

@@ -41,7 +41,6 @@ Optional: add a `decision` line to a project's `meta` (one sentence on the key d
 ## Placeholders to replace
 
 - [ ] Hero supporting line (`src/content/home.ts`)
-- [ ] CV: replace `public/cv-placeholder.pdf` (or rename and update `src/lib/site.ts`)
 - [ ] Projects in `content/work/` (copy, years, images, alt text)
 - [ ] About page copy, dates and photos (`src/content/about/`)
 - [ ] Irish Type project link (`src/content/about/index.ts`)

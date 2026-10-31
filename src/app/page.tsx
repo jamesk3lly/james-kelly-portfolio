@@ -1,4 +1,5 @@
 import { Container } from "@/components/Container";
+import { ExternalLink } from "@/components/ExternalLink";
 import { HeroHeadline } from "@/components/HeroHeadline";
 import { LetteringSlot } from "@/components/LetteringSlot";
 import { WorkIndex } from "@/components/WorkIndex";
@@ -71,14 +72,14 @@ export default async function Home() {
           </p>
           <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
             <li>
-              <a href={site.linkedin} className="prose-link">
+              <ExternalLink href={site.linkedin} className="prose-link">
                 LinkedIn
-              </a>
+              </ExternalLink>
             </li>
             <li>
-              <a href={site.cv} className="prose-link">
-                Download CV <span className="sr-only">(PDF)</span>
-              </a>
+              <ExternalLink href={site.cv} className="prose-link">
+                View CV<span className="sr-only"> (PDF)</span>
+              </ExternalLink>
             </li>
           </ul>
         </Container>

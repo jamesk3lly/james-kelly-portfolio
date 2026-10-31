@@ -5,7 +5,8 @@ export const site = {
   url: "https://jameskelly.ie",
   email: "hello@jameskelly.ie",
   linkedin: "https://www.linkedin.com/in/james-kelly-ux/",
-  cv: "/cv-placeholder.pdf", // PLACEHOLDER: drop the real PDF in /public
+  // To update the CV, replace public/james-kelly-cv.pdf (same filename).
+  cv: "/james-kelly-cv.pdf",
   location: "Co. Carlow, Ireland",
   // Default description for search results and link previews.
   description:

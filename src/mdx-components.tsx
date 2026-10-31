@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
+import { ExternalLink } from "@/components/ExternalLink";
 import type { ComponentProps } from "react";
 import {
   Figure,
@@ -14,10 +15,14 @@ import {
  * Required by @next/mdx.
  */
 
-// Internal links use Next's <Link> for instant navigation.
+// Internal links use Next's <Link> for instant navigation; links to other
+// sites open in a new tab; email links behave normally.
 function A({ href = "", ...props }: ComponentProps<"a">) {
   if (href.startsWith("/")) {
     return <Link href={href} className="prose-link" {...props} />;
+  }
+  if (/^https?:\/\//.test(href)) {
+    return <ExternalLink href={href} className="prose-link" {...props} />;
   }
   return <a href={href} className="prose-link" {...props} />;
 }
