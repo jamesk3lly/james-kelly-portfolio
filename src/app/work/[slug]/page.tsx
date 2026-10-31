@@ -61,7 +61,7 @@ async function CaseStudy({
 }) {
   const { slug } = await params;
   const { default: Content, meta } = await getPublished(slug);
-  const { previous, next } = await getAdjacentWork(slug);
+  const { current, previous, next } = await getAdjacentWork(slug);
 
   const details = [
     { label: "Role", value: meta.role },
@@ -73,7 +73,13 @@ async function CaseStudy({
     <article>
       {/* Header */}
       <Container className="pt-12 sm:pt-20 lg:pt-24">
-        <p className="flex gap-3 text-label text-muted uppercase">
+        <p className="flex flex-wrap gap-x-3 gap-y-1 text-label whitespace-nowrap text-muted uppercase">
+          {current && (
+            <>
+              <span>No. {current.number}</span>
+              <span aria-hidden="true">·</span>
+            </>
+          )}
           <span>{meta.project}</span>
           <span aria-hidden="true">·</span>
           <span>{typeLabel[meta.type]}</span>
@@ -81,6 +87,23 @@ async function CaseStudy({
         <h1 className="mt-4 max-w-5xl font-display text-title text-balance">
           {meta.title}
         </h1>
+
+        {/* The call: optional. The one decision that shaped the project,
+            shown before the context. Remove `decision` from a project's
+            meta to leave it out. */}
+        {meta.decision && (
+          <section
+            aria-label="The call"
+            className="mt-12 grid gap-3 border-l-2 border-accent pl-6 sm:mt-16 md:grid-cols-12 md:gap-10 md:border-l-0 md:pl-0"
+          >
+            <h2 className="text-label text-accent uppercase md:col-span-2 md:pt-2">
+              The call
+            </h2>
+            <p className="font-display text-heading text-balance md:col-span-10 lg:col-span-9">
+              {meta.decision}
+            </p>
+          </section>
+        )}
 
         {/* Summary block */}
         <div className="mt-12 grid gap-10 border-t border-rule pt-8 sm:mt-16 md:grid-cols-12">

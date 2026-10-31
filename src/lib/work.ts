@@ -28,9 +28,18 @@ export type WorkMeta = {
   order: number;
   /** Drafts are left out of the site entirely. */
   draft?: boolean;
+  /**
+   * Optional. The one decision that shaped the project, in a sentence.
+   * Shown as "The call" near the top of the case study when present.
+   */
+  decision?: string;
 };
 
-export type Work = WorkMeta & { slug: string };
+export type Work = WorkMeta & {
+  slug: string;
+  /** Position on the home page as a two-digit label: "01", "02"… */
+  number: string;
+};
 
 type WorkModule = { default: ComponentType; meta: WorkMeta };
 
@@ -63,18 +72,23 @@ export async function getAllWork(): Promise<Work[]> {
       ...(await loadWork(slug))!.meta,
     })),
   );
-  return items.filter((w) => !w.draft).sort((a, b) => a.order - b.order);
+  return items
+    .filter((w) => !w.draft)
+    .sort((a, b) => a.order - b.order)
+    .map((w, i) => ({ ...w, number: String(i + 1).padStart(2, "0") }));
 }
 
 /**
- * The projects before and after this one in home page order, wrapping
- * around so every page has both links.
+ * This project (with its number) and the ones before and after it in home
+ * page order, wrapping around so every page has both links.
  */
 export async function getAdjacentWork(slug: string) {
   const all = await getAllWork();
   const i = all.findIndex((w) => w.slug === slug);
-  if (i < 0 || all.length < 2) return { previous: null, next: null };
+  if (i < 0) return { current: null, previous: null, next: null };
+  if (all.length < 2) return { current: all[i], previous: null, next: null };
   return {
+    current: all[i],
     previous: all[(i - 1 + all.length) % all.length],
     next: all[(i + 1) % all.length],
   };

@@ -1,8 +1,7 @@
 import { Container } from "@/components/Container";
 import { HeroHeadline } from "@/components/HeroHeadline";
 import { LetteringSlot } from "@/components/LetteringSlot";
-import { Reveal } from "@/components/Reveal";
-import { WorkCard } from "@/components/WorkCard";
+import { WorkIndex } from "@/components/WorkIndex";
 import { closing, facts, hero } from "@/content/home";
 import { site } from "@/lib/site";
 import { getAllWork } from "@/lib/work";
@@ -43,20 +42,9 @@ export default async function Home() {
             Selected work
           </h2>
 
-          <ul className="mt-12 grid gap-x-10 gap-y-16 sm:mt-16 md:grid-cols-2 md:gap-y-24 lg:gap-x-16">
-            {work.map((item, i) => (
-              // Right-hand cards sit lower for an editorial, staggered rhythm.
-              <li key={item.slug} className={i % 2 === 1 ? "md:mt-32" : ""}>
-                <Reveal delay={(i % 2) * 0.12}>
-                  <WorkCard
-                    work={item}
-                    priority={i === 0}
-                    sizes="(min-width: 1344px) 640px, (min-width: 768px) 50vw, 100vw"
-                  />
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-10 sm:mt-14">
+            <WorkIndex work={work} />
+          </div>
         </Container>
       </section>
 
