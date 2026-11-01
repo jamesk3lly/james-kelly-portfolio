@@ -1,0 +1,95 @@
+{/*
+  eir homepage case study. Adapted from jameskelly.ie/portfolio/eir-homepage/
+  (2020). Edit freely: see content/work/example-case-study for every
+  component and how to use it.
+*/}
+
+import cover from "./cover.jpg";
+import beforeAfter from "./before-after.jpg";
+import userTesting from "./user-testing.png";
+import styleGuide from "./style-guide.png";
+import mobile from "./mobile.jpg";
+
+export const meta = {
+  title: "Redesigned eir.ie's homepage and lifted transactions by 14%",
+  project: "eir homepage",
+  year: "2020",
+  role: "Lead UX and UI designer",
+  team: "eir's strategy and digital teams, with an agile development team",
+  summary:
+    "A new homepage for one of Ireland's largest broadband, mobile and TV providers, so 20,000+ weekly visitors could see everything eir offers and get where they needed faster.",
+  cover,
+  coverAlt:
+    "The redesigned eir.ie homepage on a laptop and a phone: a purple hero banner for gigabit broadband above four shortcut tiles for Broadband, TV, Mobile and Existing customers.",
+  type: "case-study",
+  order: 3,
+  decision:
+    "Lead with clear signposts to every service, not a stack of competing promotions, so visitors could see the full range at a glance.",
+};
+
+## Context
+
+eir is one of Ireland's leading providers of broadband, mobile and TV. Its website gets more than 20,000 visitors a week, and the homepage is where most of them start.
+
+The site needed to showcase and communicate the full range of eir's services far better than it did. I led the UX and UI design of the new homepage over eight months in 2020, working with eir's strategy and digital teams and an agile development team.
+
+<FullImage
+  src={beforeAfter}
+  alt="Before and after comparison of the eir.ie homepage. Before: a long stack of full-width promotional banners for broadband, gigabit fibre, TV and phones. After: a hero banner, four shortcut tiles, a grid of offer cards and a mobile phone offers section."
+  caption="Before and after. The old homepage was a stack of full-width promotions; the new one leads with signposts to each service, then a consistent grid of offers."
+/>
+
+## The problem
+
+User testing made it clear that visitors to the site weren't aware of the services eir offered. The homepage was a sequence of large promotional banners, each competing for attention, with no clear route to broadband, TV, mobile or support for existing customers.
+
+We needed clearer signposting to communicate what was on offer, and to find and fix the pain points along each of the main customer journeys.
+
+## What I did
+
+I ran the project end to end: discovery workshops and requirement gathering, competitive research, user testing, low and high fidelity wireframes and prototypes, then close work with the development team through build, QA and A/B testing.
+
+### Testing with real customers
+
+<FullImage
+  src={userTesting}
+  alt="A remote user testing session: a participant reviewing eir's shopping basket page while on a video call, faces blurred. Beside it, the testing plan: three rounds, five to six participants per round, testing iterations of the prototypes."
+  caption="Remote user testing: three rounds with five or six participants each, testing successive iterations of the prototypes."
+/>
+
+Testing identified the existing pain points and kept the design honest as it evolved. The solution came down to four goals:
+
+- **Inform customers:** help people understand the full range of what eir offers
+- **Signposts and shortcuts:** help people get to their destination quickly and easily
+- **Introduce brand and emotion:** express the eir brand in a more cohesive, consistent way
+- **Establish a design system:** bring consistency to every communication
+
+### Mobile first
+
+65% of visitors came to eir.ie on a mobile device, so the homepage was designed for phones first: shortcut tiles near the top, offers in a simple two-column grid, and a dedicated section for mobile phone deals.
+
+<FullImage
+  src={mobile}
+  alt="Three phone screens of the new eir homepage: the hero banner with shortcut tiles for Broadband, TV bundles, Mobile and Existing customers; a two-column grid of offer cards; and a mobile phone offers section with bill pay and prepay tabs."
+  caption="The homepage on mobile, where 65% of visitors arrived."
+/>
+
+### A design system for consistency
+
+To stop each new promotion looking different from the last, I defined a design system for the homepage: a type scale, a colour palette, card components with set character limits, and button styles.
+
+<FullImage
+  src={styleGuide}
+  alt="Part of the eir design system: a type scale from a 60px H1 down to a 20px H6 in the eir typeface, offer card components annotated with radius and character limits, a colour palette of bright, dark and neutral swatches, and outline and filled Buy now buttons."
+  caption="Type scale, card components with character limits, colour palette and button styles."
+/>
+
+## Outcome
+
+We validated the new homepage with A/B testing against the old one. Over the course of the test:
+
+- **14% increase in transactions**
+- **11% more time spent on the site**
+- **6% lower bounce rate**
+
+The homepage now serves more than 20,000 visitors a week. You can see the live site at [eir.ie](https://www.eir.ie).
