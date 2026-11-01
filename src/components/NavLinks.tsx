@@ -6,7 +6,8 @@ import { nav } from "@/lib/site";
 
 /**
  * Header navigation. Marks the current section with aria-current (read
- * out by screen readers) and a quiet accent underline.
+ * out by screen readers) and a steady accent underline;
+ * other links get the same underline fading in on hover.
  */
 export function NavLinks() {
   const pathname = usePathname();
@@ -26,7 +27,7 @@ export function NavLinks() {
             <Link
               href={item.href}
               aria-current={current || undefined}
-              className="decoration-accent decoration-1 underline-offset-[0.35em] transition-colors hover:text-accent [&[aria-current]]:underline"
+              className="link-underline underline-offset-[0.35em] hover:text-accent [&[aria-current]]:decoration-accent"
             >
               {item.label}
             </Link>

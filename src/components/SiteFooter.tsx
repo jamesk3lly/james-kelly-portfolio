@@ -13,7 +13,7 @@ export function SiteFooter() {
           <li>
             <a
               href={`mailto:${site.email}`}
-              className="transition-colors hover:text-accent"
+              className="link-underline underline-offset-4 hover:text-accent"
             >
               Email
             </a>
@@ -21,7 +21,7 @@ export function SiteFooter() {
           <li>
             <ExternalLink
               href={site.linkedin}
-              className="transition-colors hover:text-accent"
+              className="link-underline underline-offset-4 hover:text-accent"
             >
               LinkedIn
             </ExternalLink>
@@ -29,7 +29,7 @@ export function SiteFooter() {
           <li>
             <ExternalLink
               href={site.cv}
-              className="transition-colors hover:text-accent"
+              className="link-underline underline-offset-4 hover:text-accent"
             >
               CV<span className="sr-only"> (PDF)</span>
             </ExternalLink>

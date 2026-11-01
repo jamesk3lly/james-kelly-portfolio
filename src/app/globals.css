@@ -71,6 +71,11 @@
   --text-label--letter-spacing: 0.08em;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Every hover/state transition shares this timing, so changes ease in
+     rather than snap. (Tailwind's transition-* utilities read these.) */
+  --default-transition-duration: 300ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ------------------------------------------------------------------
@@ -109,21 +114,43 @@
     border-radius: 2px;
   }
 
-  /* Links in running text: accent underline; text turns accent on hover. */
+  /* Links in running text: a faint underline at rest (so links are always
+     recognisable), which deepens to the full accent on hover. */
   .prose-link,
   .prose a {
     text-decoration-line: underline;
-    text-decoration-color: var(--accent);
+    text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.2em;
-    transition:
-      color 150ms,
-      text-decoration-thickness 150ms;
+    transition-property: color, text-decoration-color;
+    transition-duration: var(--default-transition-duration);
+    transition-timing-function: var(--default-transition-timing-function);
   }
   .prose-link:hover,
   .prose a:hover {
     color: var(--accent);
-    text-decoration-thickness: 2px;
+    text-decoration-color: var(--accent);
+  }
+}
+
+@layer components {
+  /* Standalone links (navigation, project titles): no underline at rest; it
+     fades in on hover. An underline can't be animated on and off, so it's
+     always there and its colour fades from transparent to the accent. Add
+     the "group" class to a parent to trigger it from the whole row. */
+  .link-underline {
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+    transition-property: color, text-decoration-color;
+    transition-duration: var(--default-transition-duration);
+    transition-timing-function: var(--default-transition-timing-function);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible,
+  .group:hover .link-underline {
+    text-decoration-color: var(--accent);
   }
 }
 
