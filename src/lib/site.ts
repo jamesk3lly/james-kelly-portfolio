@@ -7,10 +7,10 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/james-kelly-ux/",
   // To update the CV, replace public/james-kelly-cv.pdf (same filename).
   cv: "/james-kelly-cv.pdf",
-  location: "Co. Carlow, Ireland",
+  location: "Ireland",
   // Default description for search results and link previews.
   description:
-    "James Kelly is a product design leader with 20+ years in the craft, leading design teams and shaping how AI shows up in products. Based in Co. Carlow, Ireland.",
+    "James Kelly is a product design leader with 20+ years in the craft, leading design teams and shaping how AI shows up in products. Based in Ireland.",
 } as const;
 
 export const nav = [

@@ -9,9 +9,11 @@ const typeLabel = { "case-study": "Case study", note: "Note" } as const;
  * Selected work as a numbered typographic index: one row per project, led
  * by its number and outcome headline, with its cover image alongside.
  *
- * Hovering a row fades in the headline underline, colours the number and
- * gently enlarges the image inside its frame. Visitors who prefer reduced
- * motion get the colour changes but no scaling.
+ * Images sit at 95% of their column and grow to full size when the row is
+ * hovered (the whole framed image grows, not a zoom inside it). Hovering
+ * also fades in the headline underline and colours the number. Visitors
+ * who prefer reduced motion, and touch screens (which can't hover), see
+ * images at full size.
  *
  * The image repeats the headline visually, so it has empty alt text; the
  * link text carries the meaning for screen readers.
@@ -22,7 +24,7 @@ export function WorkIndex({ work }: { work: Work[] }) {
       {work.map((item) => (
         <li key={item.slug} className="border-b border-rule">
           <Reveal>
-            <div className="group relative grid gap-x-8 gap-y-5 py-8 sm:py-10 md:grid-cols-[4rem_1fr_16rem] lg:grid-cols-[6rem_1fr_20rem] lg:gap-x-10">
+            <div className="group relative grid gap-x-8 gap-y-6 py-10 sm:py-14 md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[5rem_minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-x-10">
               {/* Number: serif, old-style figures, quiet until hover. */}
               <span
                 aria-hidden="true"
@@ -37,7 +39,7 @@ export function WorkIndex({ work }: { work: Work[] }) {
                   <span aria-hidden="true"> · </span>
                   {typeLabel[item.type]}
                 </p>
-                <h3 className="mt-3 max-w-2xl font-display text-heading text-balance">
+                <h3 className="mt-3 max-w-2xl font-display text-[clamp(1.5rem,1.1rem+1.2vw,2.25rem)] leading-[1.12] tracking-[-0.015em] text-balance">
                   <Link
                     href={`/work/${item.slug}`}
                     className="link-underline after:absolute after:inset-0"
@@ -49,14 +51,15 @@ export function WorkIndex({ work }: { work: Work[] }) {
                 <p className="mt-3 max-w-2xl text-muted">{item.summary}</p>
               </div>
 
-              {/* Cover image: the frame stays put, the image scales inside. */}
-              <div className="overflow-hidden rounded-sm bg-surface md:self-start">
+              {/* Cover image: rests at 95% and grows to 100% on hover (mouse and
+                  trackpad only; touch screens show it at full size). */}
+              <div className="work-image overflow-hidden rounded-sm bg-surface md:self-start">
                 <Image
                   src={item.cover}
                   alt=""
                   placeholder="blur"
-                  sizes="(min-width: 1024px) 320px, (min-width: 768px) 256px, 100vw"
-                  className="media-img aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out-quint motion-safe:group-hover:scale-[1.04]"
+                  sizes="(min-width: 1344px) 600px, (min-width: 1024px) 45vw, (min-width: 768px) 45vw, 100vw"
+                  className="media-img aspect-[16/10] w-full object-cover"
                 />
               </div>
             </div>

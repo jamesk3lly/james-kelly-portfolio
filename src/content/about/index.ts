@@ -16,7 +16,7 @@ export const bio = [
   "I've worked in product design for more than twenty years: seventeen as a designer, and the last five leading teams.",
   "Placeholder. Today I'm a Product Design Manager at Workday, leading designers across several product areas, and helping shape where AI shows up in the product and how it behaves.",
   "Placeholder. Before that I built a design system from scratch at eir, and was a key contributor to the design systems at Diligent and Workday. Systems thinking runs through everything I do.",
-  "Placeholder. I live in Co. Carlow, Ireland. Outside work I document Irish shopfront lettering.",
+  "Placeholder. I live in Ireland. Outside work I document Irish shopfront lettering.",
 ];
 
 // PLACEHOLDER: how you work as a design leader. Three or four is plenty.

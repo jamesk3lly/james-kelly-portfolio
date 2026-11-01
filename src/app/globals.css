@@ -260,3 +260,19 @@
 .pull-quote > :last-child::after {
   content: "\201D";
 }
+
+/* Home page work images (WorkIndex.tsx): rest at 95% of their column and
+   grow to full size when the row is hovered. Only on devices that can
+   hover (mouse, trackpad) and when motion is allowed; otherwise they
+   simply show at full size. */
+.work-image {
+  transition: scale 700ms var(--ease-out-quint);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .work-image {
+    scale: 0.95;
+  }
+  .group:hover .work-image {
+    scale: 1;
+  }
+}

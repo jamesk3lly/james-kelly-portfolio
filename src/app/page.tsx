@@ -24,7 +24,7 @@ export default async function Home() {
           <LetteringSlot />
         </div>
 
-        <dl className="hero-fade mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-rule pt-8 sm:mt-24 md:grid-cols-4">
+        <dl className="hero-fade mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-rule pt-8 sm:mt-24 sm:grid-cols-3">
           {facts.map((fact) => (
             <div key={fact.label}>
               <dt className="text-label text-muted uppercase">{fact.label}</dt>

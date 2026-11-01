@@ -11,9 +11,8 @@ export const hero = {
 
 export const facts = [
   { label: "Currently", value: "Product Design Manager, Workday" },
-  { label: "Previously", value: "Diligent, eir, Threesixty" },
   { label: "Experience", value: "20+ years, 5 leading teams" },
-  { label: "Based", value: "Co. Carlow, Ireland" },
+  { label: "Based", value: "Ireland" },
 ];
 
 export const closing = {
