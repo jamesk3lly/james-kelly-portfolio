@@ -1,0 +1,98 @@
+{/*
+  My eir case study. Adapted from jameskelly.ie/portfolio/my-eir/ (2020).
+  Edit freely: see content/work/example-case-study for every component
+  and how to use it.
+
+  TO DO: the old page has no results. Add any numbers you have to the
+  Outcome section (and ideally the title): fewer steps, login or
+  registration completion, fewer support calls, more self-service top-ups.
+*/}
+
+import cover from "./cover.jpg";
+import userFlow from "./user-flow.jpg";
+import wireframes from "./wireframes.jpg";
+import mobileScreens from "./mobile-screens.jpg";
+import usage from "./usage.jpg";
+
+export const meta = {
+  title: "Rebuilt My eir so prepay customers could register, top up and check usage in fewer steps",
+  project: "My eir",
+  year: "2020",
+  role: "UX and UI designer",
+  team: "eir's digital team, with an agile development team",
+  summary:
+    "A redesign of eir's self-service portal, where mobile customers top up, check their data usage and manage their account, with a simpler login and registration at its heart.",
+  cover,
+  coverAlt:
+    "The redesigned My eir portal on a phone and a laptop. The phone shows a welcome screen with the customer's balance, a Top up button and their PIN and PUK codes; the laptop shows the My usage page with a month of usage and a detailed usage table.",
+  type: "case-study",
+  order: 4,
+  decision:
+    "Start with prepay customers and a mobile number login, and leave billpay for a second phase, so the most common journeys got simpler first.",
+};
+
+## Context
+
+My eir is eir's self-service portal. Customers use it to top up their mobile, check their data usage, and see and update their account details.
+
+The portal worked, but it was hard work to use. Over six months I led its UX and UI redesign, working with eir's digital team and an agile development team.
+
+## The problem
+
+Getting into My eir took too many steps, and so did most of what customers came to do once they were in. User testing showed where people got stuck, starting with registration and login.
+
+The goal was simplification: fewer steps and actions to register, log in and get things done, and an interface that felt intuitive from the first screen.
+
+## What I did
+
+I ran the project from discovery to launch: UX workshops and requirement gathering, user testing to find the existing pain points, low and high fidelity wireframes and prototypes, then close work with the development team through build, QA and A/B testing.
+
+### Mapping the journey
+
+I mapped the whole service as one flow, from eir.ie through registration to the dashboard. Prepay and billpay customers had different needs, so we scoped the first release to prepay and moved billpay to a second phase.
+
+<FullImage
+  src={userFlow}
+  alt="A flow diagram of My eir in three stages. Pre-login: eir.ie, the My eir landing page, then a split into prepay and billpay customers, with billpay marked Phase 2. Registration: enter mobile number, SMS verification code, code confirmation, registration details and password creation. Dashboard: My account, with profile, usage and add-ons, Top up and Log out."
+  caption="The service mapped end to end, with billpay deferred to a second phase."
+/>
+
+### Wireframing every step
+
+Registration came down to a short, predictable sequence: enter your mobile number, confirm a code sent by text, add your details and create a password. I wireframed it alongside every dashboard screen, so we could test the full journey before any visual design.
+
+<FullImage
+  src={wireframes}
+  alt="Fourteen low fidelity mobile wireframes joined by arrows. The first row is the login and registration flow, from choosing prepay or billpay to registration complete. The second row is the signed-in experience: dashboard, profile, usage, add-ons, top up, payment and log out."
+  caption="Low fidelity wireframes for registration and every signed-in screen, tested as one journey."
+/>
+
+### Designing for the phone first
+
+My eir is where people manage their mobile, so the designs started on the phone. Log in and Register sit side by side on the first screen. Once signed in, your balance and a Top up button come first, with your PIN and PUK codes close behind.
+
+<FullImage
+  src={mobileScreens}
+  alt="Three phone screens of the new My eir. Log in, with Log in and Register tabs, email and password fields, and a Next button. Register as a new customer, with customer and address details and an Eircode lookup. The dashboard, welcoming the customer with their balance, a Top up button and their PIN and PUK codes."
+  caption="Log in, registration and the dashboard on mobile."
+/>
+
+### Making usage easy to read
+
+Usage was one of the main reasons people visited. The new usage page sums up a month of spend by type, then lets customers filter the detail, while the mobile dashboard shows add-ons and data used against each allowance.
+
+<FullImage
+  src={usage}
+  alt="A phone showing the customer's add-ons and data usage against their allowance as progress bars, beside a laptop showing the My usage page: a carousel of monthly spend by SMS, voice and data, and a filterable table of detailed usage."
+  caption="Usage on mobile and desktop."
+/>
+
+## Outcome
+
+We validated the redesign with A/B testing against the old portal before rolling it out to customers.
+
+{/* TO DO: add the results here, for example:
+- **X% more customers completed registration**
+- **Registration cut from X steps to Y**
+- **X% fewer support calls about account access**
+*/}
