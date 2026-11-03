@@ -1,6 +1,7 @@
 import { site } from "@/lib/site";
 import { Container } from "./Container";
 import { ExternalLink } from "./ExternalLink";
+import { LocalTime } from "./LocalTime";
 
 export function SiteFooter() {
   return (
@@ -8,6 +9,7 @@ export function SiteFooter() {
       <Container className="flex flex-col gap-6 py-10 text-[0.9375rem] text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>
           {site.name} · {site.location}
+          <LocalTime />
         </p>
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           <li>

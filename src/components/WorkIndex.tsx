@@ -48,7 +48,10 @@ export function WorkIndex({ work }: { work: Work[] }) {
                     {item.title}
                   </Link>
                 </h3>
-                <p className="mt-3 max-w-2xl text-muted">{item.summary}</p>
+                {/* Capped at two lines; keep summaries to about 100 characters. */}
+                <p className="mt-3 line-clamp-2 max-w-2xl text-muted">
+                  {item.summary}
+                </p>
               </div>
 
               {/* Cover image: rests at 95% and grows to 100% on hover (mouse and
