@@ -23,8 +23,9 @@ export type WorkMeta = {
   cover: StaticImageData;
   coverAlt: string;
   /**
-   * Optional. A square image for the home page card, if a different one
-   * works better than the cover there. Falls back to the cover.
+   * Optional. An image for the home page card, if a different one works
+   * better than the cover there. Shown cropped to 16:10 (landscape), so
+   * keep the subject near the middle. Falls back to the cover.
    */
   card?: StaticImageData;
   /** "case-study" = full write-up, "note" = short page. */

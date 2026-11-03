@@ -10,7 +10,7 @@ const typeLabel = { "case-study": "Case study", note: "Note" } as const;
  * Selected work as a numbered typographic index: one row per project, led
  * by its number and outcome headline, with its cover image alongside.
  *
- * Square images sit at 95% of their column and grow to full size when the row is
+ * Images sit at 95% of their column and grow to full size when the row is
  * hovered (the whole framed image grows, not a zoom inside it). Hovering
  * also fades in the headline underline and colours the number. Visitors
  * who prefer reduced motion, and touch screens (which can't hover), see
@@ -28,7 +28,7 @@ export function WorkIndex({ work }: { work: Work[] }) {
             {/* Each card is a pale tint of the project's brand colour (see
                 .work-card in globals.css and `tint` in each project's meta). */}
             <div
-              className="work-card group relative grid gap-x-8 gap-y-6 rounded-[20px] p-6 sm:p-10 md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,0.8fr)] lg:grid-cols-[5rem_minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-x-10 lg:p-12"
+              className="work-card group relative grid gap-x-8 gap-y-6 rounded-[20px] p-6 sm:p-10 md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[5rem_minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-x-10 lg:p-12"
               data-tint={item.tint ? "" : undefined}
               style={
                 item.tint
@@ -65,7 +65,7 @@ export function WorkIndex({ work }: { work: Work[] }) {
                 </p>
               </div>
 
-              {/* Square card image (or the cover, cropped square): rests at 95%
+              {/* Card image (or the cover), cropped to 16:10: rests at 95%
                   and grows to 100% on hover (mouse and trackpad only; touch
                   screens show it at full size). Its scale puts it on its own
                   layer above the link, so pointer events pass through to the
@@ -75,8 +75,8 @@ export function WorkIndex({ work }: { work: Work[] }) {
                   src={item.card ?? item.cover}
                   alt=""
                   placeholder="blur"
-                  sizes="(min-width: 1344px) 520px, (min-width: 768px) 40vw, 100vw"
-                  className="media-img aspect-square w-full object-cover"
+                  sizes="(min-width: 1344px) 600px, (min-width: 768px) 45vw, 100vw"
+                  className="media-img aspect-[16/10] w-full object-cover"
                 />
               </div>
             </div>
