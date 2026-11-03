@@ -64,7 +64,9 @@ export default async function Home() {
           >
             {closing.heading}
           </h2>
-          <p className="mt-6 max-w-2xl text-lede text-muted">{closing.text}</p>
+          <p className="mt-6 max-w-2xl text-lede font-light text-muted">
+            {closing.text}
+          </p>
           <p className="mt-10">
             <a
               href={`mailto:${site.email}`}
