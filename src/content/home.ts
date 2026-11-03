@@ -17,6 +17,6 @@ export const facts = [
 
 export const closing = {
   // PLACEHOLDER
-  heading: "Let's talk about your team.",
+  heading: "Let's talk.",
   text: "Open to senior, principal and design leadership roles, especially where AI is changing the product.",
 };
