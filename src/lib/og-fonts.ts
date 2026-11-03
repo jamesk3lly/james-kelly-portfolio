@@ -40,6 +40,6 @@ export function loadOgFonts() {
 export const ogColors = {
   bg: "#f5f1e8",
   text: "#1b1915",
-  muted: "#5c564c",
+  muted: "#55585e",
   accent: "#543afd",
 };

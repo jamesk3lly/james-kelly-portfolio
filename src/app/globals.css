@@ -15,8 +15,8 @@
   --bg: #f5f1e8; /* warm off-white paper */
   --surface: #ece6da; /* cards, image placeholders */
   --text: #1b1915; /* near-black ink */
-  --text-muted: #5c564c; /* supporting copy, 6.4:1 */
-  --rule: #d6cebf; /* hairlines (decorative) */
+  --text-muted: #55585e; /* supporting copy, a slightly cool grey */
+  --rule: #d4d1cb; /* hairlines (decorative), slightly cool */
   --accent: #543afd; /* violet, 5.5:1 */
 }
 
@@ -25,8 +25,8 @@
   --bg: #151311; /* warm charcoal */
   --surface: #1e1b18;
   --text: #ece6da; /* paper colour, not pure white */
-  --text-muted: #a69e91; /* 7:1 */
-  --rule: #38332d;
+  --text-muted: #a0a3a9; /* a slightly cool grey */
+  --rule: #353539;
   --accent: #9b8cff; /* softer violet; the light one is too dim here. 6.7:1 */
 }
 
