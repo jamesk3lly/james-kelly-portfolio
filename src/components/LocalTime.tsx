@@ -42,7 +42,7 @@ export function LocalTime() {
         <svg
           aria-hidden="true"
           viewBox="0 0 16 16"
-          className="size-[0.85em] translate-y-[0.1em] self-center"
+          className="size-[0.85em] self-center"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"

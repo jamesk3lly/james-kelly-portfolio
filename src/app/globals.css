@@ -276,3 +276,60 @@
     scale: 1;
   }
 }
+
+/* Circular cursor (src/components/CustomCursor.tsx). The outer element
+   follows the pointer; the inner dot changes size and colour. The dot is
+   drawn at full size and scaled down at rest, so growing it is smooth. */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.custom-cursor[data-visible="true"] {
+  opacity: 1;
+}
+
+.custom-cursor-dot {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: -1.25rem 0 0 -1.25rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background: var(--color-text);
+  scale: 0.25;
+  transition:
+    scale 400ms var(--ease-out-quint),
+    background-color 300ms var(--ease-out-quint),
+    border-color 300ms var(--ease-out-quint);
+}
+
+/* Over a link or button: a larger, soft purple circle. */
+.custom-cursor[data-active="true"] .custom-cursor-dot {
+  scale: 1;
+  background: color-mix(in oklab, var(--color-accent) 16%, transparent);
+  border-color: var(--color-accent);
+}
+
+/* A small press while clicking. */
+.custom-cursor[data-pressed="true"] .custom-cursor-dot {
+  scale: 0.2;
+}
+.custom-cursor[data-active="true"][data-pressed="true"] .custom-cursor-dot {
+  scale: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor-dot {
+    transition: none;
+  }
+}

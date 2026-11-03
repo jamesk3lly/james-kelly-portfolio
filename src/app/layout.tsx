@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CustomCursor } from "@/components/CustomCursor";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SkipLink } from "@/components/SkipLink";
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <SiteFooter />
+        <CustomCursor />
       </body>
     </html>
   );
