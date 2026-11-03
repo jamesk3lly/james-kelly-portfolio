@@ -192,7 +192,7 @@
     animation-delay: calc(150ms + var(--line, 0) * 140ms);
   }
 }
-/* Supporting line, facts row and ASCII pattern fade in as the
+/* Supporting line, facts row and hero pattern fade in as the
    headline settles. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-fade {
@@ -371,36 +371,13 @@
   }
 }
 
-/* Generative ASCII field in the home page hero (src/components/AsciiField.tsx).
-   Lines are drawn in the muted ink, dots in the accent, both kept faint so
-   the headline reads clearly on top. The edges fade out with a mask. */
-.ascii-field {
-  /* Positioned by the page (absolute); no position here, or it would
-     override the utility class. */
-  overflow: hidden;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 13px;
-  line-height: 1.25;
-  user-select: none;
-  -webkit-mask-image: radial-gradient(closest-side, #000 45%, transparent);
-  mask-image: radial-gradient(closest-side, #000 45%, transparent);
-}
-.ascii-field pre {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  font: inherit;
-  white-space: pre;
-}
-.ascii-field-lines {
-  color: var(--text-muted);
-  opacity: 0.4;
-}
-.ascii-field-dots {
-  color: var(--accent);
-  opacity: 0.55;
-}
-.ascii-field-probe {
-  position: absolute;
-  visibility: hidden;
+/* Generative line art in the home page hero (src/components/HeroPattern.tsx):
+   orbit circles, the lines between dots, and the dots themselves. Kept
+   faint so the headline reads clearly on top; the edges fade out. */
+.hero-pattern {
+  --hero-pattern-ring: color-mix(in oklab, var(--text) 16%, transparent);
+  --hero-pattern-line: color-mix(in oklab, var(--text) 26%, transparent);
+  --hero-pattern-dot: color-mix(in oklab, var(--accent) 60%, transparent);
+  -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent);
+  mask-image: radial-gradient(closest-side, #000 40%, transparent);
 }

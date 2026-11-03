@@ -30,7 +30,7 @@ Then open http://localhost:3000.
 - `src/lib/site.ts` — name, email, LinkedIn, CV link, site description
 - `src/app/fonts.ts` — the fonts (change the display serif here)
 - `src/app/globals.css` — colours for light and dark mode (including the accent)
-- `src/components/AsciiField.tsx` — the generative ASCII pattern behind the hero headline (tuning notes at the top)
+- `src/components/HeroPattern.tsx` — the generative line art behind the hero headline (tuning notes at the top)
 
 ## Adding a case study
 
@@ -44,7 +44,7 @@ Optional: add a `decision` line to a project's `meta` (one sentence on the key d
 - [ ] Projects in `content/work/` (copy, images, alt text; years still 20XX on the example and AI in Workday)
 - [ ] About page intro, bio, principles and photos (`src/content/about/`); career and education are filled in from the CV
 - [ ] Irish Type project link (`src/content/about/index.ts`)
-- [x] Hero artwork: generative ASCII pattern (`src/components/AsciiField.tsx`)
+- [x] Hero artwork: generative line art (`src/components/HeroPattern.tsx`)
 - [x] Display serif: Merriweather (`src/app/fonts.ts`, and `src/lib/og-fonts.ts` for the share image and icons)
 - [ ] Optional: replace the "JK" monogram icon (`src/lib/monogram.tsx`)
 
