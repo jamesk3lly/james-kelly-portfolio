@@ -277,9 +277,18 @@
   }
 }
 
-/* Circular cursor (src/components/CustomCursor.tsx). The outer element
-   follows the pointer; the inner dot changes size and colour. The dot is
-   drawn at full size and scaled down at rest, so growing it is smooth. */
+/* Circular cursor (src/components/CustomCursor.tsx). Two layers follow
+   the pointer together:
+
+   - The lens: a 20px circle that tints whatever it passes over in the
+     accent purple. It's a blend layer, so text under it turns purple and
+     the page background barely changes. Light mode uses "screen" (dark
+     text becomes purple); dark mode uses "multiply" (light text becomes
+     purple, the dark background stays dark).
+   - The ring: hidden until the pointer is over a link or button, then it
+     grows from 20px to 40px as a soft purple circle, and the lens fades.
+
+   Both are drawn at full size and scaled, so size changes are smooth. */
 .has-custom-cursor,
 .has-custom-cursor * {
   cursor: none !important;
@@ -299,37 +308,58 @@
   opacity: 1;
 }
 
-.custom-cursor-dot {
+.custom-cursor-lens {
+  mix-blend-mode: screen;
+}
+[data-theme="dark"] .custom-cursor-lens {
+  mix-blend-mode: multiply;
+}
+
+.custom-cursor-shape {
+  border-radius: 9999px;
+  transition:
+    scale 400ms var(--ease-out-quint),
+    opacity 300ms var(--ease-out-quint);
+}
+
+.custom-cursor-lens .custom-cursor-shape {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: -0.625rem 0 0 -0.625rem;
+  background: var(--color-accent);
+}
+
+.custom-cursor-ring .custom-cursor-shape {
   width: 2.5rem;
   height: 2.5rem;
   margin: -1.25rem 0 0 -1.25rem;
-  border-radius: 9999px;
-  border: 1px solid transparent;
-  background: var(--color-text);
-  scale: 0.25;
-  transition:
-    scale 400ms var(--ease-out-quint),
-    background-color 300ms var(--ease-out-quint),
-    border-color 300ms var(--ease-out-quint);
+  border: 1px solid var(--color-accent);
+  background: color-mix(in oklab, var(--color-accent) 16%, transparent);
+  scale: 0.5;
+  opacity: 0;
 }
 
-/* Over a link or button: a larger, soft purple circle. */
-.custom-cursor[data-active="true"] .custom-cursor-dot {
+/* Over a link or button: the ring grows in and the lens fades out. */
+.custom-cursor-ring[data-active="true"] .custom-cursor-shape {
   scale: 1;
-  background: color-mix(in oklab, var(--color-accent) 16%, transparent);
-  border-color: var(--color-accent);
+  opacity: 1;
+}
+.custom-cursor-lens[data-active="true"] .custom-cursor-shape {
+  scale: 1.5;
+  opacity: 0;
 }
 
 /* A small press while clicking. */
-.custom-cursor[data-pressed="true"] .custom-cursor-dot {
-  scale: 0.2;
+.custom-cursor-lens[data-pressed="true"] .custom-cursor-shape {
+  scale: 0.8;
 }
-.custom-cursor[data-active="true"][data-pressed="true"] .custom-cursor-dot {
+.custom-cursor-ring[data-active="true"][data-pressed="true"]
+  .custom-cursor-shape {
   scale: 0.85;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .custom-cursor-dot {
+  .custom-cursor-shape {
     transition: none;
   }
 }
