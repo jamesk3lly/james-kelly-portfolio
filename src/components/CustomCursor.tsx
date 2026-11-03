@@ -53,10 +53,27 @@ export function CustomCursor() {
     let copy: HTMLElement | null = null;
 
     // Line the copy up with the original, relative to the circle's centre.
+    // Line the copy up with the original, and match its size: work card
+    // images grow on hover, so the copy has to grow with them.
     const alignCopy = () => {
       if (!source || !copy) return;
       const r = source.getBoundingClientRect();
       copy.style.transform = `translate3d(${r.left - cx}px, ${r.top - cy}px, 0)`;
+      copy.style.width = `${r.width}px`;
+      copy.style.height = `${r.height}px`;
+    };
+
+    // Keep the copy matched while the original animates (an image growing
+    // on hover takes 700ms), even if the pointer stays still.
+    let follow = 0;
+    const followFor = (ms: number) => {
+      cancelAnimationFrame(follow);
+      const until = performance.now() + ms;
+      const step = (now: number) => {
+        alignCopy();
+        follow = now < until ? requestAnimationFrame(step) : 0;
+      };
+      follow = requestAnimationFrame(step);
     };
 
     const place = () => {
@@ -195,6 +212,7 @@ export function CustomCursor() {
       copy = clone;
       layer.appendChild(clone);
       alignCopy();
+      followFor(900);
     };
 
     const onMove = (e: PointerEvent) => {
@@ -236,6 +254,7 @@ export function CustomCursor() {
 
     return () => {
       cancelAnimationFrame(frame);
+      cancelAnimationFrame(follow);
       copy?.remove();
       root.classList.remove("has-custom-cursor");
       window.removeEventListener("pointermove", onMove);

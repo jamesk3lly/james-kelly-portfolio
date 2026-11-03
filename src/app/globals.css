@@ -273,7 +273,13 @@
   background-color: var(--surface);
 }
 .work-card[data-tint] {
+  /* Fallback for browsers without relative colours. */
   background-color: color-mix(in oklab, var(--tint) 11%, #fff);
+  /* Light mode: keep only the brand colour's hue, at one shared lightness
+     and a soft, low saturation, so every card is an even, matched pastel
+     however loud the brand colour is. Lower the 0.9 to darken them all,
+     raise the 0.03 for more colour. */
+  background-color: oklch(from var(--tint) 0.9 0.03 h);
 }
 [data-theme="dark"] .work-card[data-tint] {
   background-color: color-mix(in oklab, var(--tint) 16%, var(--bg));
