@@ -22,6 +22,11 @@ export type WorkMeta = {
   summary: string;
   cover: StaticImageData;
   coverAlt: string;
+  /**
+   * Optional. A square image for the home page card, if a different one
+   * works better than the cover there. Falls back to the cover.
+   */
+  card?: StaticImageData;
   /** "case-study" = full write-up, "note" = short page. */
   type: "case-study" | "note";
   /** Lower numbers appear first on the home page. */
