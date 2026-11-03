@@ -1,7 +1,7 @@
+import { AsciiField } from "@/components/AsciiField";
 import { Container } from "@/components/Container";
 import { ExternalLink } from "@/components/ExternalLink";
 import { HeroHeadline } from "@/components/HeroHeadline";
-import { LetteringSlot } from "@/components/LetteringSlot";
 import { WorkIndex } from "@/components/WorkIndex";
 import { closing, facts, hero } from "@/content/home";
 import { site } from "@/lib/site";
@@ -13,18 +13,20 @@ export default async function Home() {
   return (
     <>
       {/* Hero */}
-      <Container className="pt-12 pb-20 sm:pt-20 sm:pb-28 lg:pt-28">
-        <div className="flex flex-col-reverse gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+      <Container className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 lg:pt-28">
+        {/* Generative ASCII pattern, behind the headline on the right. */}
+        <AsciiField className="hero-fade pointer-events-none absolute top-0 right-0 h-[22rem] w-full sm:h-[30rem] md:w-[70%] lg:h-[36rem] lg:w-[58%]" />
+
+        <div className="relative">
           <div className="max-w-6xl">
             <HeroHeadline text={hero.statement} />
             <p className="hero-fade mt-8 max-w-2xl text-lede text-muted sm:mt-10">
               {hero.supporting}
             </p>
           </div>
-          <LetteringSlot />
         </div>
 
-        <dl className="hero-fade mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-rule pt-8 sm:mt-24 sm:grid-cols-3">
+        <dl className="hero-fade relative mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-rule pt-8 sm:mt-24 sm:grid-cols-3">
           {facts.map((fact) => (
             <div key={fact.label}>
               <dt className="text-label text-muted uppercase">{fact.label}</dt>
