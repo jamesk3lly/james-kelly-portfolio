@@ -4,9 +4,11 @@ import { useEffect, useRef } from "react";
 
 // Anything a visitor can click.
 const INTERACTIVE = "a[href], button, [role='button'], label, summary, select";
-// Blocks of text the cursor inverts when it passes over them.
+// Blocks of text the cursor inverts when it passes over them. List items
+// aren't included, since some hold a whole card; one with text of its own
+// is still found (see hasOwnText below).
 const TEXT =
-  "h1, h2, h3, h4, h5, h6, p, li, dt, dd, figcaption, blockquote, time, td, th";
+  "h1, h2, h3, h4, h5, h6, p, dt, dd, figcaption, blockquote, time, td, th";
 
 /**
  * A circular cursor that replaces the system pointer on mouse and trackpad
@@ -113,16 +115,37 @@ export function CustomCursor() {
       return false;
     };
 
+    const hasOwnText = (e: Element) =>
+      [...e.childNodes].some(
+        (n) => n.nodeType === Node.TEXT_NODE && n.textContent?.trim(),
+      );
+
     // What to invert under the pointer: an image, a link or button (its
     // text block), a block of text, or nothing over empty background.
     const findTarget = (hit: Element | null, px: number, py: number) => {
       if (!hit || hit.closest(".custom-cursor")) return null;
       const img = imageAt(px, py);
       if (img) return img;
-      const link = hit.closest(INTERACTIVE);
-      if (link) return blockFor(link);
-      const text = hit.closest(TEXT);
-      return text && overText(text, px, py) ? text : null;
+      // Look through everything stacked under the pointer, top first. A
+      // card's link is stretched over the whole card, so the summary, date
+      // and number sit underneath it; they still count when the pointer is
+      // over their words.
+      let underLink: Element | null = null;
+      for (const e of document.elementsFromPoint(px, py)) {
+        if (e.closest(".custom-cursor")) continue;
+        const link = e.closest(INTERACTIVE);
+        if (link) {
+          if (overText(link, px, py)) return blockFor(link);
+          underLink ??= link;
+        }
+        // The nearest text block, or an element holding text of its own
+        // (such as a card's number).
+        const block = hasOwnText(e) ? blockFor(e) : e.closest(TEXT);
+        if (block && overText(block, px, py)) return block;
+      }
+      // Elsewhere on a link (a card's padding, an icon button): the solid
+      // circle, with nothing to invert inside it.
+      return underLink ? blockFor(underLink) : null;
     };
 
     const setTarget = (next: Element | null) => {

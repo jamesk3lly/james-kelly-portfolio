@@ -355,6 +355,9 @@
 .custom-cursor-inverse * {
   color: var(--color-bg) !important;
   text-decoration-color: var(--color-bg) !important;
+  /* A copied block keeps no fill of its own (a tinted card, say), so the
+     solid purple circle shows behind it. */
+  background-color: transparent !important;
   transition: none !important;
   animation: none !important;
 }
