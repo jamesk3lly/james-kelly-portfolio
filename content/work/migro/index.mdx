@@ -1,0 +1,108 @@
+{/*
+  Migro case study. Adapted from jameskelly.ie/portfolio/migro/.
+  Edit freely: see content/work/example-case-study for every component
+  and how to use it.
+
+  TO DO: check the year (the live site's testimonials are dated late 2017)
+  and the team line, which the old page doesn't mention.
+*/}
+
+import cover from "./cover.jpg";
+import userJourney from "./user-journey.jpg";
+import userFlow from "./user-flow.jpg";
+import wireframeSketch from "./wireframe-sketch.jpg";
+import visuals1 from "./visuals-1.jpg";
+import visuals2 from "./visuals-2.jpg";
+
+export const meta = {
+  title: "Launched a brand and website for an LED lighting start-up, and grew sales by 700% in eight months",
+  project: "Migro",
+  year: "2017",
+  role: "Brand, UX and UI designer",
+  team: "Migro's founders",
+  summary:
+    "A new name, brand identity and product website for Migro, a start-up making high efficiency LED grow lights, built to stand out in a crowded market and sell to an international customer base.",
+  cover,
+  coverAlt:
+    "The Migro website on a laptop: a dark header with the Migro wordmark and Home, Products, Knowledge Blog and Buy navigation, above a hero for high efficiency LED light packages showing a light fixture over young plants.",
+  type: "case-study",
+  order: 5,
+  decision:
+    "Cut the navigation down to two paths, the products and the Knowledge Centre, so every visitor faced one clear choice.",
+};
+
+## Context
+
+Migro is a start-up that makes high efficiency LED lights for home growers. It needed a brand identity and a product website, migrolight.com, that could sell to customers around the world.
+
+The market was crowded with similar-looking products, so a distinctive visual style and a confident, assured tone of voice were essential to stand out.
+
+I worked on every touchpoint, from planning through launch, review and testing: product naming, user research, user journeys and flows, wireframes and prototypes, brand and visual design, UI design, user testing, A/B testing and analytics.
+
+## The problem
+
+The site had three jobs to do:
+
+- **Explain the product:** make clear what Migro offers and why it beats the competition
+- **Show expertise:** put the Migro Knowledge Centre front and centre, to get people engaging and coming back
+- **Build trust:** give buyers confidence in the quality of the product and the people behind it
+
+## What I did
+
+### Mapping the customer journey
+
+I started by mapping the whole customer journey, from first hearing about Migro to recommending it, and every touchpoint along the way. Many of those touchpoints sit away from the website, on YouTube, in reviews and through word of mouth, so the site had to work alongside them.
+
+<FullImage
+  src={userJourney}
+  alt="The Migro user journey: five stages, awareness, consideration, purchase, service and loyalty, each with its touchpoints listed below, from the YouTube channel and online ads to the secure payment process, live chat, testimonials and online reviews."
+  caption="The customer journey, stage by stage, with the touchpoints at each."
+/>
+
+### Two paths, not ten
+
+The core of the solution was to send every visitor in one of two directions: the product and its benefits, or the Knowledge Centre and Migro's expertise. Cutting the navigation down to those two reduced the cognitive load and made the decision easy. The Products menu lists each light by name, so the whole range is clear at a glance.
+
+<FullImage
+  src={userFlow}
+  alt="A low fidelity flowchart from the homepage to purchase. Home branches into Knowledge, leading to blog posts, and Products, leading to four product pages, Migro 100, 200, 400 and 600. All routes, including blog posts, lead to Buy product and then Checkout."
+  caption="The site flow: two paths from the homepage, both leading to purchase."
+/>
+
+### From sketch to site
+
+I sketched the homepage first, annotating the job of each section: key product highlights, the Knowledge Centre to show expertise, secondary benefits, company information and customer testimonials to build trust, and a newsletter sign-up.
+
+<FullImage
+  src={wireframeSketch}
+  alt="A hand-drawn homepage wireframe annotated in blue ink, with notes such as key product highlights, knowledge centre to show expertise, company information to build trust and recent customer testimonials, beside the final live homepage with the same structure."
+  caption="The low fidelity sketch and the live homepage it became."
+/>
+
+### Selling with figures, not adjectives
+
+To show Migro's advantage over the competition, the design leans on figures and infographics: efficiency per watt, less heat and power than the equivalent HPS lights, and a chart comparing Migro with standard LED and HPS lights.
+
+<ImagePair
+  images={[
+    {
+      src: visuals1,
+      alt: "Three phone screens of the Migro site: the homepage hero for LED grow light packages, the open menu listing the Migro 100, 200, 400 and 600, and a product page with benefits such as best in class efficiency, 50% less heat and 40% less power than equivalent HPS.",
+    },
+    {
+      src: visuals2,
+      alt: "Two tablets: the product range, four lights with coverage, prices and More info buttons above a Buy Migro banner; and a dark efficiency page with a bar chart comparing Migro at 2.1 µmol per watt with standard LED at 1.5 and HPS at 1.3.",
+    },
+  ]}
+  caption="On phone and tablet: the product range, the menu and the efficiency figures."
+/>
+
+## Outcome
+
+After launch, we tracked the new brand and site through A/B testing and analytics:
+
+- **Trust:** 700% increase in sales and conversions in eight months
+- **Engagement:** 74% longer average visits, up to 3 minutes 20 seconds
+- **Visibility:** 222% increase in traffic to the site
+- **Authority:** 6,000 visitors a day to the Migro YouTube channel
+- **Profitability:** 70% of sales coming directly through the website
