@@ -60,7 +60,7 @@ export function WorkIndex({ work }: { work: Work[] }) {
                   </Link>
                 </h3>
                 {/* Capped at two lines; keep summaries to about 100 characters. */}
-                <p className="mt-3 line-clamp-2 max-w-2xl font-light text-muted">
+                <p className="mt-3 line-clamp-2 max-w-2xl text-muted">
                   {item.summary}
                 </p>
               </div>

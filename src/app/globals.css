@@ -94,6 +94,15 @@
     font-size: 1.0625rem;
     line-height: 1.65;
     font-feature-settings: "ss01"; /* Inter: open digits, easier to read */
+    /* Inter Light for all text; headlines set their own weight. */
+    font-weight: 300;
+  }
+
+  /* Bold stays clearly bold on top of the light text weight (the browser's
+     default, "bolder", would only step up to 400). */
+  b,
+  strong {
+    font-weight: 600;
   }
 
   /* Headlines in the display face use optical sizing automatically. */
