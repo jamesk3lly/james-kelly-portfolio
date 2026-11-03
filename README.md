@@ -45,12 +45,12 @@ Optional: add a `decision` line to a project's `meta` (one sentence on the key d
 - [ ] About page intro, bio, principles and photos (`src/content/about/`); career and education are filled in from the CV
 - [ ] Irish Type project link (`src/content/about/index.ts`)
 - [ ] Lettering mark SVG (`src/components/LetteringSlot.tsx`)
-- [ ] Final display serif (`src/app/fonts.ts`), then update `src/lib/og-fonts.ts` so the share image and icons match
+- [x] Display serif: Merriweather (`src/app/fonts.ts`, and `src/lib/og-fonts.ts` for the share image and icons)
 - [ ] Optional: replace the "JK" monogram icon (`src/lib/monogram.tsx`)
 
 ## Changing the display serif
 
-1. In `src/app/fonts.ts`, swap `Newsreader` for another Google font, loading only the weights you use (each extra weight or style slows the first paint).
+1. In `src/app/fonts.ts`, swap `Merriweather` for another Google font, loading only the weights you use (each extra weight or style slows the first paint).
 2. Install its `@fontsource/<name>` package and point `src/lib/og-fonts.ts` at its `.woff` file, so the share image and icons use it too.
 
 ## Known quirks

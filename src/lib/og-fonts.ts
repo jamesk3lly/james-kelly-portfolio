@@ -13,7 +13,7 @@ const files = path.join(process.cwd(), "node_modules", "@fontsource");
 // Read once when the module loads (synchronously), so Next can generate
 // the icons and share image at build time instead of on each request.
 const display = readFileSync(
-  path.join(files, "newsreader/files/newsreader-latin-400-normal.woff"),
+  path.join(files, "merriweather/files/merriweather-latin-400-normal.woff"),
 );
 const text = readFileSync(
   path.join(files, "inter/files/inter-latin-400-normal.woff"),

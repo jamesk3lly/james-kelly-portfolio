@@ -39,7 +39,7 @@ export function WorkIndex({ work }: { work: Work[] }) {
                   <span aria-hidden="true"> · </span>
                   {typeLabel[item.type]}
                 </p>
-                <h3 className="mt-3 max-w-2xl font-display text-[clamp(1.5rem,1.1rem+1.2vw,2.25rem)] leading-[1.12] tracking-[-0.015em] text-balance">
+                <h3 className="mt-3 max-w-2xl font-display text-[clamp(1.375rem,1.05rem+1vw,2rem)] leading-[1.22] tracking-[-0.01em] text-balance">
                   <Link
                     href={`/work/${item.slug}`}
                     className="link-underline after:absolute after:inset-0"

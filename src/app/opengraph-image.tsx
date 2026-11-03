@@ -29,9 +29,9 @@ export default function OpenGraphImage() {
       <div
         style={{
           fontFamily: "Display",
-          fontSize: 92,
-          lineHeight: 1,
-          letterSpacing: "-0.02em",
+          fontSize: 84,
+          lineHeight: 1.15,
+          letterSpacing: "-0.015em",
           maxWidth: 980,
         }}
       >
