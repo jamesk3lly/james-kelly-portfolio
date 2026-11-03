@@ -26,6 +26,12 @@ export type WorkMeta = {
   type: "case-study" | "note";
   /** Lower numbers appear first on the home page. */
   order: number;
+  /**
+   * Optional. The project's main brand colour as a hex, e.g. "#1f3383".
+   * Its home page card gets a very light pastel of it (a deep tint in
+   * dark mode). Without one, the card uses a neutral tint.
+   */
+  tint?: string;
   /** Drafts are left out of the site entirely. */
   draft?: boolean;
   /**

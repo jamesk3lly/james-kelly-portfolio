@@ -265,6 +265,20 @@
    grow to full size when the row is hovered. Only on devices that can
    hover (mouse, trackpad) and when motion is allowed; otherwise they
    simply show at full size. */
+/* Home page work cards: a very light pastel of each project's brand colour
+   (--tint, set from its meta). In dark mode the same colour becomes a
+   deep, muted tint of the charcoal background instead. Cards without a
+   brand colour use the plain surface colour. */
+.work-card {
+  background-color: var(--surface);
+}
+.work-card[data-tint] {
+  background-color: color-mix(in oklab, var(--tint) 11%, #fff);
+}
+[data-theme="dark"] .work-card[data-tint] {
+  background-color: color-mix(in oklab, var(--tint) 16%, var(--bg));
+}
+
 .work-image {
   transition: scale 700ms var(--ease-out-quint);
 }

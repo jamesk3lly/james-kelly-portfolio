@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import type { Work } from "@/lib/work";
 import { Reveal } from "./Reveal";
 
@@ -20,11 +21,21 @@ const typeLabel = { "case-study": "Case study", note: "Note" } as const;
  */
 export function WorkIndex({ work }: { work: Work[] }) {
   return (
-    <ol className="border-t border-rule">
+    <ol className="grid gap-4 sm:gap-6">
       {work.map((item) => (
-        <li key={item.slug} className="border-b border-rule">
+        <li key={item.slug}>
           <Reveal>
-            <div className="group relative grid gap-x-8 gap-y-6 py-10 sm:py-14 md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[5rem_minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-x-10">
+            {/* Each card is a pale tint of the project's brand colour (see
+                .work-card in globals.css and `tint` in each project's meta). */}
+            <div
+              className="work-card group relative grid gap-x-8 gap-y-6 rounded-[20px] p-6 sm:p-10 md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[5rem_minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-x-10 lg:p-12"
+              data-tint={item.tint ? "" : undefined}
+              style={
+                item.tint
+                  ? ({ "--tint": item.tint } as CSSProperties)
+                  : undefined
+              }
+            >
               {/* Number: serif, old-style figures, quiet until hover. */}
               <span
                 aria-hidden="true"
