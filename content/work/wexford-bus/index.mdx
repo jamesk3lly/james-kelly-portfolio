@@ -1,0 +1,132 @@
+{/*
+  Wexford Bus case study. Adapted from
+  jameskelly.ie/portfolio/wexford-bus-website-and-app/.
+  Edit freely: see content/work/example-case-study for every component
+  and how to use it.
+
+  TO DO: check the year (the desktop booking designs are dated 2016 and
+  the mobile booking journey 2018), your role and the team line, which
+  the old page doesn't mention.
+*/}
+
+import cover from "./cover.jpg";
+import sketches from "./sketches.jpg";
+import bookingJourney from "./booking-journey.jpg";
+import desktopBooking from "./desktop-booking.jpg";
+import mobileScreens from "./mobile-screens.jpg";
+import tablet from "./tablet.jpg";
+import iconography from "./iconography.jpg";
+import styleSheet from "./style-sheet.jpg";
+
+export const meta = {
+  title: "Simplified booking for Wexford Bus, lifting ticket sales by 19% and cutting phone calls by 29%",
+  project: "Wexford Bus",
+  year: "2016",
+  role: "Lead UX and UI designer",
+  team: "A small design and development team",
+  summary:
+    "A new website, app and online booking system for an Irish coach operator, designed to work seamlessly on every device and let passengers book without picking up the phone.",
+  cover,
+  coverAlt:
+    "The new Wexford Bus website on a laptop: the blue and orange Wexford Bus logo, a Book tickets bar with From and To fields, a Welcome Aboard message beside a coach in the new livery, and tiles for free wi-fi, air-conditioning, reclining seats and luggage compartments.",
+  type: "case-study",
+  order: 6,
+  decision:
+    "Cut booking down to three clear steps, with a timeline showing passengers where they are, so booking online was easier than calling.",
+};
+
+## Context
+
+Wexford Bus runs coach services between Wexford, Dublin City and Dublin Airport. It wanted to refresh its online presence and bring in a new app and online booking system.
+
+The aim was to overhaul the experience and the visuals together, with a distinctive visual language that would stand out from competitors.
+
+## The problem
+
+Wexford Bus wanted more passengers booking online, and fewer calling with questions. The project goals were to:
+
+- **Deliver a fully responsive booking system**
+- **Give a seamless experience across mobile, tablet and desktop**
+- **Increase web traffic and online bookings**
+- **Reduce phone calls and queries,** by making the process intuitive
+
+## What I did
+
+### Research first
+
+We began with foundational research, to immerse the whole team in the world of travel and online booking. We studied best-in-class booking systems and their journeys; Work&Co's redesign for Virgin America was a particular inspiration, technically, functionally and in the experience it created.
+
+We interviewed customers and reviewed the strengths and weaknesses of direct and international competitors. From that we built a set of personas, so the needs of every kind of passenger were accounted for, then mapped the customer journey and planned the user flow.
+
+### Sketching the booking flow
+
+I sketched the mobile booking flow on paper first: journey details, then date, time and tickets, then the choice of specific services.
+
+<FullImage
+  src={sketches}
+  alt="Three hand-drawn mobile wireframes joined by arrows: journey details with from, to and date fields; date and time with adult and child ticket counters; and ticket selection with outward and return services listed by time, each ending in a Book now button."
+  caption="First sketches of the mobile booking flow."
+/>
+
+The sketches became a four-step mobile journey, planned in low fidelity wireframes before moving to high fidelity.
+
+<FullImage
+  src={bookingJourney}
+  alt="The Wexford Bus mobile booking user journey in four wireframes: step 1, a booking overview with core ticket information; step 2, destination, ticket type and dates; step 3, confirmation of dates, times and tickets; step 4, selection of specific outward and return times."
+  caption="The mobile booking journey, step by step."
+/>
+
+### Three steps, one timeline
+
+On desktop, the core booking process came down to three key steps, to reduce cognitive load: choose your tickets, add passenger information, pay. A numbered timeline at the top shows passengers where they are and what's left, a tunnelling approach that keeps them focused on finishing. The last step hands over to a secure third-party payment system.
+
+<FullImage
+  src={desktopBooking}
+  alt="Three desktop booking screens. Ticket selection, with outward and return journeys listed by departure time and price. Passenger information, with journey details and a contact form. Payment status, confirming the booking with its reference and payment details. Each has a three-step timeline across the top."
+  caption="The three-step desktop booking process, with its timeline across the top."
+/>
+
+### Booking at the centre of every screen
+
+Booking is the core task, so it sits centre stage on the homepage, on every device. Below it, a feed of three easily updated panels carries offers and news. User interviews identified eight key areas of interest, which became quick links in the footer of every page.
+
+<FullImage
+  src={mobileScreens}
+  alt="Three phone screens of the new site. Buy tickets, with from, to, return or single and date fields above an orange Book now button. Offer panels for a 9 euro student fare and the live bus tracker. Explore our routes with a map, a welcome aboard panel and footer quick links for the live bus tracker, timetables and fares, buying tickets and managing a booking."
+  caption="On mobile: booking first, then offers, with quick links in every footer."
+/>
+
+<FullImage
+  src={tablet}
+  alt="The Wexford Bus homepage on a tablet: a Buy tickets panel beside a coach and a Commute to Dublin City from 26 euro a day offer, with a travel update and three panels below."
+  caption="The homepage on tablet."
+/>
+
+### One visual language everywhere
+
+To keep the website and app consistent, I designed an iconography system used across every application, and a global style sheet setting out headings, body text and buttons.
+
+<ImagePair
+  images={[
+    {
+      src: iconography,
+      alt: "The Wexford Bus icon set in white line icons with orange accents on navy: live bus tracker, timetables and fares, buy tickets, manage booking, download app, private hire, advertise with us and newsletter, beside a phone showing the icons in the site footer.",
+    },
+    {
+      src: styleSheet,
+      alt: "Two pages of the Wexford Bus global style sheet: a heading scale from a 40px H1 to an 18px H5 in navy and orange, and body text styles with large and small link and button styles.",
+    },
+  ]}
+  caption="The iconography system and global style sheet."
+/>
+
+## Outcome
+
+After launch:
+
+- **19% more tickets bought** in the first six months, with the simpler booking process
+- **23% more traffic** on average, organic and direct, from better SEO and site structure
+- **12% higher conversion rate,** from a more streamlined booking process
+- **29% fewer web-related phone calls,** thanks to a more intuitive interface
+
+You can see the live site at [wexfordbus.com](https://www.wexfordbus.com).
