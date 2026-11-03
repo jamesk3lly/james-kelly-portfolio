@@ -359,6 +359,14 @@
   animation: none !important;
 }
 
+/* Images under the cursor: an inverted purple duotone. The image is turned
+   to an inverted greyscale and multiplied onto the solid purple circle, so
+   its dark areas turn purple and its light areas turn deep ink. */
+.custom-cursor-inverse img {
+  filter: grayscale(1) invert(1) contrast(1.15);
+  mix-blend-mode: multiply;
+}
+
 .custom-cursor-inverse *::after,
 .custom-cursor-inverse *::before {
   display: none;
@@ -372,10 +380,9 @@
 }
 
 /* Generative line art in the home page hero (src/components/HeroPattern.tsx):
-   orbit circles, the lines between dots, and the dots themselves. Kept
+   the lines between dots, and the dots themselves. Kept
    faint so the headline reads clearly on top; the edges fade out. */
 .hero-pattern {
-  --hero-pattern-ring: color-mix(in oklab, var(--text) 16%, transparent);
   --hero-pattern-line: color-mix(in oklab, var(--text) 26%, transparent);
   --hero-pattern-dot: color-mix(in oklab, var(--accent) 60%, transparent);
   -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent);

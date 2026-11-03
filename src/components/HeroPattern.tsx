@@ -3,35 +3,39 @@
 import { useEffect, useRef } from "react";
 
 /*
- * Generative line art for the home page hero: circles, lines and dots.
+ * Generative line art for the home page hero: lines and dots.
  *
  * A honeycomb grid of points, each with a dot travelling round its own
- * small circle. Each dot is a little behind the one nearer the centre, so a
+ * small (invisible) circle. Each dot is a little behind the one nearer the centre, so a
  * ripple of rotation spreads outwards. Lines join every dot to its
  * neighbours, and as the dots move out of step the mesh folds into
  * rippling, interlocking shapes. Every dot makes exactly one turn per loop,
  * so the end of the loop meets its start.
  *
+ * The cursor pushes nearby dots away, so the mesh bulges around it like a
+ * lens, then settles back when the cursor leaves.
+ *
  * Tuning:
  * - SPACING: distance between grid points (px).
- * - ORBIT: radius of each dot's circle, as a share of SPACING. Above 0.5
- *   the circles overlap their neighbours and interlock.
+ * - ORBIT: radius of each dot's circle, as a share of SPACING.
  * - RIPPLE: how far behind each ring of dots runs (higher = tighter rings).
  * - LOOP_MS: length of one loop.
+ * - PUSH, REACH: how far the cursor pushes dots (px), and over what radius.
  */
 const SPACING = 56;
 const ORBIT = 0.58;
 const RIPPLE = 0.75;
 const LOOP_MS = 9_000;
+const PUSH = 30;
+const REACH = 130;
 
-type Colours = { line: string; ring: string; dot: string };
+type Colours = { line: string; dot: string };
 
 // Reads the theme colours from CSS, so the pattern follows light and dark.
 function readColours(el: Element): Colours {
   const cs = getComputedStyle(el);
   return {
     line: cs.getPropertyValue("--hero-pattern-line").trim(),
-    ring: cs.getPropertyValue("--hero-pattern-ring").trim(),
     dot: cs.getPropertyValue("--hero-pattern-dot").trim(),
   };
 }
@@ -53,6 +57,9 @@ export function HeroPattern({ className = "" }: { className?: string }) {
     let raf = 0;
     let visible = true;
     const start = performance.now();
+    // The cursor, eased: its position in the canvas and how strongly it
+    // pushes (0 when it's away, easing up to 1 when it's over the pattern).
+    const pointer = { x: 0, y: 0, tx: 0, ty: 0, push: 0, target: 0 };
 
     // Grid points: position, distance from the centre, and the indexes of
     // the neighbours each one draws lines to (each pair is drawn once).
@@ -93,25 +100,32 @@ export function HeroPattern({ className = "" }: { className?: string }) {
       const turn = t * Math.PI * 2;
       const r = SPACING * ORBIT;
 
+      pointer.x += (pointer.tx - pointer.x) * 0.12;
+      pointer.y += (pointer.ty - pointer.y) * 0.12;
+      pointer.push += (pointer.target - pointer.push) * 0.06;
+      const pushing = !reduce.matches && pointer.push > 0.001;
+
       const dx = new Float32Array(points.length);
       const dy = new Float32Array(points.length);
       points.forEach((p, i) => {
         const a = turn - p.d * RIPPLE;
-        dx[i] = p.x + Math.cos(a) * r;
-        dy[i] = p.y + Math.sin(a) * r;
+        let x = p.x + Math.cos(a) * r;
+        let y = p.y + Math.sin(a) * r;
+        if (pushing) {
+          // Push away from the cursor, strongest close to it.
+          const ox = x - pointer.x;
+          const oy = y - pointer.y;
+          const dist = Math.hypot(ox, oy) || 1;
+          const f = pointer.push * PUSH * Math.exp(-((dist / REACH) ** 2));
+          x += (ox / dist) * f;
+          y += (oy / dist) * f;
+        }
+        dx[i] = x;
+        dy[i] = y;
       });
 
       ctx.clearRect(0, 0, width, height);
-
-      // Circles: the path each dot travels.
-      ctx.beginPath();
-      for (const p of points) {
-        ctx.moveTo(p.x + r, p.y);
-        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-      }
-      ctx.strokeStyle = colours.ring;
       ctx.lineWidth = 1;
-      ctx.stroke();
 
       // Lines between neighbouring dots.
       ctx.beginPath();
@@ -179,7 +193,27 @@ export function HeroPattern({ className = "" }: { className?: string }) {
     });
     reduce.addEventListener("change", play);
 
+    // Follow the mouse (not touch, so scrolling a phone doesn't bulge it).
+    // The pattern ignores pointer events, so this listens on the window.
+    const onMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const inside = x > 0 && y > 0 && x < rect.width && y < rect.height;
+      if (inside && pointer.target === 0) {
+        // Start the push where the cursor enters, not where it last left.
+        pointer.x = x;
+        pointer.y = y;
+      }
+      pointer.tx = x;
+      pointer.ty = y;
+      pointer.target = inside ? 1 : 0;
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+
     return () => {
+      window.removeEventListener("pointermove", onMove);
       cancelAnimationFrame(raf);
       resize.disconnect();
       seen.disconnect();
