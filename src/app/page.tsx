@@ -1,4 +1,3 @@
-import { HeroPattern } from "@/components/HeroPattern";
 import { Container } from "@/components/Container";
 import { ExternalLink } from "@/components/ExternalLink";
 import { HeroHeadline } from "@/components/HeroHeadline";
@@ -14,8 +13,10 @@ export default async function Home() {
     <>
       {/* Hero */}
       <Container className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 lg:pt-28">
-        {/* Generative line art, behind the headline on the right. */}
-        <HeroPattern className="hero-fade pointer-events-none absolute top-0 right-0 h-[22rem] w-full opacity-60 sm:h-[30rem] sm:opacity-100 md:w-[70%] lg:h-[36rem] lg:w-[58%]" />
+        {/* Hero artwork: turned off for now (too distracting). To bring the
+            generative line art back, import HeroPattern from
+            "@/components/HeroPattern" and add:
+            <HeroPattern className="hero-fade pointer-events-none absolute top-0 right-0 h-[22rem] w-full opacity-60 sm:h-[30rem] sm:opacity-100 md:w-[70%] lg:h-[36rem] lg:w-[58%]" /> */}
 
         <div className="relative">
           <div className="max-w-6xl">
