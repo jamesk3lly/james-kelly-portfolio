@@ -1,4 +1,5 @@
-// About page copy in one place. Anything marked PLACEHOLDER needs real copy.
+// About page copy in one place. Written from the 2026 CV, the old Workday
+// page and the case studies; edit freely in your own voice.
 // Career, education and training are taken from the 2026 CV.
 
 import irishType1 from "./irish-type-1.jpg";
@@ -6,36 +7,36 @@ import irishType2 from "./irish-type-2.jpg";
 import irishType3 from "./irish-type-3.jpg";
 
 export const intro = {
-  // PLACEHOLDER: one line on who you are.
+  // One line on who you are.
   heading: "I lead design teams through the shift to AI-shaped products.",
 };
 
-// PLACEHOLDER: the longer bio. Each string is a paragraph; the first is
-// set larger as an introduction.
+// The longer bio. Each string is a paragraph; the first is set larger as an
+// introduction.
 export const bio = [
   "I've worked in product design for more than twenty years: seventeen as a designer, and the last five leading teams.",
-  "Placeholder. Today I'm a Product Design Manager at Workday, leading designers across several product areas, and helping shape where AI shows up in the product and how it behaves.",
-  "Placeholder. Before that I built a design system from scratch at eir, and was a key contributor to the design systems at Diligent and Workday. Systems thinking runs through everything I do.",
-  "Placeholder. I live in Ireland. Outside work I document Irish shopfront lettering.",
+  "Today I'm a Product Design Manager at Workday, leading UX across Learning, Help, and Journeys & Onboarding, with seven product designers in Europe and San Francisco. Each of those teams has its own AI roadmap, and I support them on strategy and leadership: where AI genuinely helps people, and how it should behave when it does.",
+  "Before Workday I was a lead designer at Diligent and at eir, and before that I spent fifteen years at Threesixty, leading a team of designers and developers on websites, apps and digital products. Along the way I've built and scaled design systems and SaaS platforms across HR, finance, learning and organisational management.",
+  "I lead in a people-first way. I want designers to have the clarity and room to do their best work, and I care as much about measurable outcomes as about craft. I'm based in Ireland, and outside work I'm usually looking at type, especially the hand-painted lettering on Irish shopfronts.",
 ];
 
-// PLACEHOLDER: how you work as a design leader. Three or four is plenty.
+// How you work as a design leader.
 export const principles = [
   {
     title: "Make the problem smaller",
-    text: "Placeholder. A sentence or two on how this shows up in practice, ideally with a concrete example.",
+    text: "Big problems stall teams, so I break them into pieces small enough to test and learn from early. At eir that meant shipping in small increments and validating each one with A/B testing, which lifted transactions by 14%.",
   },
   {
     title: "Give designers room and a clear brief",
-    text: "Placeholder. A sentence or two on how this shows up in practice, ideally with a concrete example.",
+    text: "I'd rather set a clear goal and get out of the way than prescribe the answer. Regular 1:1s, honest feedback and weekly critiques keep the bar high, and a psychologically safe team takes the creative risks that make the work better.",
   },
   {
     title: "Systems before screens",
-    text: "Placeholder. A sentence or two on how this shows up in practice, ideally with a concrete example.",
+    text: "Consistent products come from shared foundations, not one-off screens. On eir.ie, a simple type scale, palette and set of card components stopped every new promotion looking different from the last.",
   },
   {
     title: "Decide where AI belongs, then how it behaves",
-    text: "Placeholder. A sentence or two on how this shows up in practice, ideally with a concrete example.",
+    text: "AI should earn its place in a product. With each team's AI roadmap, we start with where it genuinely helps people, then design how it behaves, so it supports the people using it rather than getting in their way.",
   },
 ];
 
@@ -101,6 +102,9 @@ export const training = [
 ];
 
 export const irishType = {
+  // Hidden until the copy, link and photos are ready: set to true to show
+  // the Lettering section on the About page.
+  show: false,
   heading: "Irish Type",
   // PLACEHOLDER
   paragraphs: [

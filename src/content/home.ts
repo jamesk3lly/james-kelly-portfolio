@@ -1,10 +1,10 @@
-// Home page copy in one place. Anything marked PLACEHOLDER needs real copy.
+// Home page copy in one place.
 
 export const hero = {
   // The positioning statement. Keep it to roughly 6–12 words. It's also
   // used on the link-preview image (src/app/opengraph-image.tsx).
   statement: "I’m James, a product designer and design manager in Ireland.",
-  // PLACEHOLDER: one or two sentences of support.
+  // One or two sentences of support.
   supporting:
     "Twenty years designing enterprise software, the last several leading teams. Currently thinking a lot about where AI genuinely helps products.",
 };
@@ -16,7 +16,6 @@ export const facts = [
 ];
 
 export const closing = {
-  // PLACEHOLDER
   heading: "Let's talk.",
   text: "Open to senior, principal and design leadership roles, especially where AI is changing the product.",
 };

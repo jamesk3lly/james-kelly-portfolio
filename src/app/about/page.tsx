@@ -144,40 +144,44 @@ export default function AboutPage() {
           </ul>
         </Section>
 
-        <Section id="irish-type" label="Lettering">
-          <h3 className="font-display text-heading">{irishType.heading}</h3>
-          <div className="mt-6 max-w-2xl space-y-5 text-[1.125rem] leading-relaxed">
-            {irishType.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-          <p className="mt-6">
-            <ExternalLink href={irishType.link.href} className="prose-link">
-              {irishType.link.label}
-            </ExternalLink>
-          </p>
-        </Section>
+        {irishType.show && (
+          <Section id="irish-type" label="Lettering">
+            <h3 className="font-display text-heading">{irishType.heading}</h3>
+            <div className="mt-6 max-w-2xl space-y-5 text-[1.125rem] leading-relaxed">
+              {irishType.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <p className="mt-6">
+              <ExternalLink href={irishType.link.href} className="prose-link">
+                {irishType.link.label}
+              </ExternalLink>
+            </p>
+          </Section>
+        )}
       </div>
 
       {/* Lettering photos run full width, below the section text. */}
-      <figure className="mt-2">
-        <ul className="grid gap-4 sm:grid-cols-3 sm:gap-6">
-          {irishType.images.map((img) => (
-            <li key={img.src.src}>
-              <Image
-                src={img.src}
-                alt={img.alt}
-                placeholder="blur"
-                sizes="(min-width: 1344px) 400px, (min-width: 640px) 33vw, 100vw"
-                className="media-img aspect-[4/5] w-full rounded-sm bg-surface object-cover"
-              />
-            </li>
-          ))}
-        </ul>
-        <figcaption className="mt-3 text-sm text-muted">
-          {irishType.caption}
-        </figcaption>
-      </figure>
+      {irishType.show && (
+        <figure className="mt-2">
+          <ul className="grid gap-4 sm:grid-cols-3 sm:gap-6">
+            {irishType.images.map((img) => (
+              <li key={img.src.src}>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  placeholder="blur"
+                  sizes="(min-width: 1344px) 400px, (min-width: 640px) 33vw, 100vw"
+                  className="media-img aspect-[4/5] w-full rounded-sm bg-surface object-cover"
+                />
+              </li>
+            ))}
+          </ul>
+          <figcaption className="mt-3 text-sm text-muted">
+            {irishType.caption}
+          </figcaption>
+        </figure>
+      )}
     </Container>
   );
 }
