@@ -19,13 +19,14 @@ export const textFont = Inter({
 // Display face (Merriweather): hero, page titles, section headings, card
 // headlines, numbers and pull quotes.
 //
-// Performance: only the one weight the site uses (400, upright) is loaded.
-// The headline is the largest thing on each page, so its font file size
-// directly affects the Lighthouse score. Loading italics or extra variable
-// axes here roughly quadrupled the download. Keep the final serif lean too.
+// Loaded as a variable font (weight axis only, upright), so the hero can
+// sit a touch lighter (360) than other headings (400).
+//
+// Performance: the headline is the largest thing on each page, so its font
+// file size directly affects the Lighthouse score. Loading italics or extra
+// variable axes here roughly quadrupled the download. Keep the serif lean.
 export const displayFont = Merriweather({
   subsets: ["latin"],
-  weight: "400",
   style: "normal",
   variable: "--font-display-face",
   display: "swap",
