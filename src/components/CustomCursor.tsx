@@ -208,6 +208,9 @@ export function CustomCursor() {
         letterSpacing: cs.letterSpacing,
         textTransform: cs.textTransform,
         textAlign: cs.textAlign,
+        // A copied list item sits outside its list, so it would get a
+        // bullet back.
+        listStyle: "none",
       });
       copy = clone;
       layer.appendChild(clone);
