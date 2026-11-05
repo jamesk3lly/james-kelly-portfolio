@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { ExternalLink } from "@/components/ExternalLink";
 import { HeroHeadline } from "@/components/HeroHeadline";
+import { ScrollToWork } from "@/components/ScrollToWork";
 import { WorkIndex } from "@/components/WorkIndex";
 import { closing, facts, hero } from "@/content/home";
 import { site } from "@/lib/site";
@@ -21,7 +22,7 @@ export default async function Home() {
         <div className="relative">
           <div className="max-w-6xl">
             <HeroHeadline text={hero.statement} />
-            <p className="hero-fade mt-6 max-w-2xl text-lede text-muted sm:mt-7">
+            <p className="hero-fade mt-6 max-w-[52rem] text-lede text-muted sm:mt-7">
               {hero.supporting}
             </p>
           </div>
@@ -47,19 +48,9 @@ export default async function Home() {
             className="flex scroll-mt-8 items-center gap-[0.35em] font-display text-heading"
           >
             Selected work
-            {/* A quiet pointer to the list below, like the Work menu's. */}
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 12 12"
-              className="size-[0.42em] translate-y-[0.08em] text-muted"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M2.5 4.5 6 8l3.5-3.5" />
-            </svg>
+            {/* A quiet arrow, like the Work menu's: scrolls slowly until
+                this heading sits at the top of the screen. */}
+            <ScrollToWork target="work" />
           </h2>
 
           <div className="mt-10 sm:mt-14">
