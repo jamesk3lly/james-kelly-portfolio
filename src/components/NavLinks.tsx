@@ -27,7 +27,11 @@ export function NavLinks({ work }: { work: WorkMenuItem[] }) {
             />
           );
         return (
-          <li key={item.href}>
+          // Phones have no room for Home; the name links home there.
+          <li
+            key={item.href}
+            className={item.href === "/" ? "max-sm:hidden" : undefined}
+          >
             <Link
               href={item.href}
               aria-current={pathname === item.href ? "page" : undefined}
