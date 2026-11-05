@@ -26,6 +26,11 @@ export default function ContactPage() {
       href: site.twitter,
     },
     {
+      label: "X (Irish Type)",
+      value: `@${handle(site.twitterIrishType)}`,
+      href: site.twitterIrishType,
+    },
+    {
       label: "Instagram",
       value: `@${handle(site.instagram)}`,
       href: site.instagram,
