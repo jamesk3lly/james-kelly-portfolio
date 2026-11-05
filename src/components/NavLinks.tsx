@@ -3,30 +3,34 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { nav } from "@/lib/site";
+import { WorkMenu, type WorkMenuItem } from "./WorkMenu";
 
 /**
- * Header navigation. Marks the current section with aria-current (read
- * out by screen readers) and a steady accent underline;
- * other links get the same underline fading in on hover.
+ * Header navigation. Work opens a dropdown of the case studies (see
+ * WorkMenu); About is a plain link. The current section gets a steady
+ * accent underline (and aria-current on About, read out by screen
+ * readers); other links get the same underline fading in on hover.
  */
-export function NavLinks() {
+export function NavLinks({ work }: { work: WorkMenuItem[] }) {
   const pathname = usePathname();
 
   return (
     <ul className="flex items-center gap-5 text-[0.9375rem] sm:gap-8">
       {nav.map((item) => {
-        // About is the current page on /about ("page"). Work links to a
-        // section of the home page, so on case studies it's marked as the
-        // current section ("true") rather than the current page.
-        const current =
-          item.href === "/about"
-            ? pathname === "/about" && "page"
-            : pathname.startsWith("/work/") && "true";
+        // Work is "current" on case studies; the dropdown marks the page.
+        if (item.href === "/#work")
+          return (
+            <WorkMenu
+              key={item.href}
+              items={work}
+              current={pathname.startsWith("/work/")}
+            />
+          );
         return (
           <li key={item.href}>
             <Link
               href={item.href}
-              aria-current={current || undefined}
+              aria-current={pathname === item.href ? "page" : undefined}
               className="link-underline underline-offset-[0.35em] hover:text-accent [&[aria-current]]:decoration-accent"
             >
               {item.label}
