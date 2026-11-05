@@ -6,6 +6,24 @@ import { Reveal } from "./Reveal";
 
 const typeLabel = { "case-study": "Case study", note: "Note" } as const;
 
+// A small padlock, sized to the label text.
+function LockIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="size-[1.1em] -translate-y-px"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+    >
+      <rect x="3" y="7" width="10" height="7" rx="1.5" />
+      <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" />
+    </svg>
+  );
+}
+
 /**
  * Selected work as a numbered typographic index: one row per project, led
  * by its number and outcome headline, with its cover image alongside.
@@ -45,10 +63,16 @@ export function WorkIndex({ work }: { work: Work[] }) {
               </span>
 
               <div className="min-w-0">
-                <p className="text-label text-muted uppercase">
-                  {item.year}
-                  <span aria-hidden="true"> · </span>
-                  {typeLabel[item.type]}
+                <p className="flex items-center gap-x-[0.4em] text-label text-muted uppercase">
+                  <span>{item.year}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{typeLabel[item.type]}</span>
+                  {/* Case studies need a password (see src/lib/access.ts). */}
+                  <span aria-hidden="true">·</span>
+                  <span className="inline-flex items-center gap-1">
+                    <LockIcon />
+                    Password
+                  </span>
                 </p>
                 <h3 className="mt-3 max-w-2xl font-display text-[clamp(1.375rem,1.05rem+1vw,2rem)] leading-[1.22] tracking-[-0.01em] text-balance">
                   <Link
