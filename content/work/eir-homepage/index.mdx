@@ -1,7 +1,18 @@
 {/*
-  eir homepage case study. Adapted from jameskelly.ie/portfolio/eir-homepage/
-  (2020). Edit freely: see content/work/example-case-study for every
-  component and how to use it.
+  eir case study: critical customer journeys, end to end. Adapted from
+  jameskelly.ie/portfolio/eir-homepage/ (2020). The folder (and URL) keeps
+  its old name so existing links still work. Edit freely: see
+  content/work/example-case-study for every component and how to use it.
+
+  TO DO, for James:
+  - Name the critical journeys you worked on (for example: buying
+    broadband, choosing a TV bundle, upgrading a phone, existing customers
+    getting help) and add one or two lines on what changed in each.
+  - Add images of the journeys beyond the homepage (product pages,
+    basket, checkout), if you have them.
+  - Check the line about testing whole tasks ("finding a broadband plan
+    and getting it into the basket"). It's inferred from the basket
+    testing image, so adjust it to what you actually tested.
 */}
 
 import cover from "./cover.jpg";
@@ -12,13 +23,13 @@ import styleGuide from "./style-guide.png";
 import mobile from "./mobile.jpg";
 
 export const meta = {
-  title: "Redesigned eir.ie's homepage and lifted transactions by 14%",
-  project: "eir homepage",
+  title: "Redesigned eir.ie's critical customer journeys end to end, lifting transactions by 14%",
+  project: "eir.ie journeys",
   year: "2020",
   role: "Lead UX and UI designer",
   team: "eir's strategy and digital teams, with an agile development team",
   summary:
-    "A clearer homepage for eir and its 20,000+ weekly visitors.",
+    "Clearer end-to-end journeys for eir's broadband, TV and mobile customers, from first visit to purchase.",
   cover,
   // The home page card image, cropped to landscape (falls back to the cover).
   card,
@@ -29,40 +40,40 @@ export const meta = {
   // Main brand colour; the home page card is a pale tint of it. eir's magenta, from the homepage hero.
   tint: "#b0218f",
   decision:
-    "Lead with clear signposts to every service, not a stack of competing promotions, so visitors could see the full range at a glance.",
+    "Design each journey from first visit to purchase as one experience, starting with clear signposts to every service rather than a stack of competing promotions.",
 };
 
 ## Context
 
-eir is one of Ireland's leading providers of broadband, mobile and TV. Its website gets more than 20,000 visitors a week, and the homepage is where most of them start.
+eir is one of Ireland's leading providers of broadband, mobile and TV. Its website gets more than 20,000 visitors a week, and for most of them it's where they find, compare and buy eir's services, or get help as existing customers.
 
-The site needed to showcase and communicate the full range of eir's services far better than it did. I led the UX and UI design of the new homepage over eight months in 2020, working with eir's strategy and digital teams and an agile development team.
+The critical journeys through the site, from a first visit to a completed purchase, weren't working as well as they should. I led the UX and UI design of those journeys end to end over eight months in 2020, working with eir's strategy and digital teams and an agile development team. The homepage, where most journeys begin, was the first and most visible part of the work.
 
 <FullImage
   src={beforeAfter}
   alt="Before and after comparison of the eir.ie homepage. Before: a long stack of full-width promotional banners for broadband, gigabit fibre, TV and phones. After: a hero banner, four shortcut tiles, a grid of offer cards and a mobile phone offers section."
-  caption="Before and after. The old homepage was a stack of full-width promotions; the new one leads with signposts to each service, then a consistent grid of offers."
+  caption="Where most journeys start, before and after. The old homepage was a stack of full-width promotions; the new one leads with signposts to each service, then a consistent grid of offers."
 />
 
 ## The problem
 
-User testing made it clear that visitors to the site weren't aware of the services eir offered. The homepage was a sequence of large promotional banners, each competing for attention, with no clear route to broadband, TV, mobile or support for existing customers.
+User testing showed that customers were losing their way. Visitors weren't aware of the full range of services eir offered, and the homepage, a sequence of large promotional banners each competing for attention, gave no clear route into broadband, TV, mobile or support for existing customers.
 
-We needed clearer signposting to communicate what was on offer, and to find and fix the pain points along each of the main customer journeys.
+The problem wasn't any single page. It was the journey as a whole: how people found what they needed, understood it, and got through to buying it. We needed to find and fix the pain points along each of the critical journeys, from the first screen to the last.
 
 ## What I did
 
-I ran the project end to end: discovery workshops and requirement gathering, competitive research, user testing, low and high fidelity wireframes and prototypes, then close work with the development team through build, QA and A/B testing.
+I ran the project end to end: discovery workshops and requirement gathering, competitive research, mapping the critical journeys and their pain points, user testing, low and high fidelity wireframes and prototypes, then close work with the development team through build, QA and A/B testing.
 
 ### Testing with real customers
 
 <FullImage
   src={userTesting}
   alt="A remote user testing session: a participant reviewing eir's shopping basket page while on a video call, faces blurred. Beside it, the testing plan: three rounds, five to six participants per round, testing iterations of the prototypes."
-  caption="Remote user testing: three rounds with five or six participants each, testing successive iterations of the prototypes."
+  caption="Remote user testing, here on the shopping basket: three rounds with five or six participants each, testing successive iterations of the prototypes across the journeys."
 />
 
-Testing identified the existing pain points and kept the design honest as it evolved. The solution came down to four goals:
+Rather than testing pages in isolation, we tested whole tasks, such as finding a broadband plan and getting it into the basket. That showed where people dropped off or got stuck, and kept the design honest as it evolved. The solution came down to four goals:
 
 - **Inform customers:** help people understand the full range of what eir offers
 - **Signposts and shortcuts:** help people get to their destination quickly and easily
@@ -71,7 +82,7 @@ Testing identified the existing pain points and kept the design honest as it evo
 
 ### Mobile first
 
-65% of visitors came to eir.ie on a mobile device, so the homepage was designed for phones first: shortcut tiles near the top, offers in a simple two-column grid, and a dedicated section for mobile phone deals.
+65% of visitors came to eir.ie on a mobile device, so the journeys were designed for phones first. On the homepage, that meant shortcut tiles near the top to start each journey, offers in a simple two-column grid, and a dedicated section for mobile phone deals.
 
 <FullImage
   src={mobile}
@@ -81,7 +92,7 @@ Testing identified the existing pain points and kept the design honest as it evo
 
 ### A design system for consistency
 
-To stop each new promotion looking different from the last, I defined a design system for the homepage: a type scale, a colour palette, card components with set character limits, and button styles.
+A journey only feels like one experience if every step looks and behaves the same way. To stop each page and promotion looking different from the last, I defined a design system: a type scale, a colour palette, card components with set character limits, and button styles.
 
 <FullImage
   src={styleGuide}
@@ -91,10 +102,10 @@ To stop each new promotion looking different from the last, I defined a design s
 
 ## Outcome
 
-We validated the new homepage with A/B testing against the old one. Over the course of the test:
+We validated the new design with A/B testing against the old one. Over the course of the test:
 
 - **14% increase in transactions**
 - **11% more time spent on the site**
 - **6% lower bounce rate**
 
-The homepage now serves more than 20,000 visitors a week. You can see the live site at [eir.ie](https://www.eir.ie).
+The new journeys now serve more than 20,000 visitors a week. You can see the live site at [eir.ie](https://www.eir.ie).
