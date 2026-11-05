@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Container } from "@/components/Container";
@@ -152,12 +153,20 @@ function MoreWork({ previous, next }: { previous: Work; next: Work }) {
   ];
   return (
     <nav aria-label="More work" className="border-t border-rule">
-      <Container className="grid gap-px sm:grid-cols-2">
+      {/* Each link is a card in its project's pale tint, like the home
+          page (see .work-card in globals.css). */}
+      <Container className="grid gap-[26px] py-14 sm:grid-cols-2 sm:gap-[34px] sm:py-20">
         {links.map(({ work, label, align }) => (
           <Link
             key={label}
             href={`/work/${work.slug}`}
-            className={`group py-10 sm:py-14 ${align}`}
+            data-tint={work.tint ? "" : undefined}
+            style={
+              work.tint
+                ? ({ "--tint": work.tint } as CSSProperties)
+                : undefined
+            }
+            className={`work-card group block rounded-[20px] p-6 sm:p-10 ${align}`}
           >
             <span className="text-label text-muted uppercase">
               {label === "Previous" && <span aria-hidden="true">← </span>}
