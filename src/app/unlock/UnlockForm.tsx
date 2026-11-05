@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { unlock, type UnlockState } from "./actions";
 
 /** The password field. A wrong password shows a message under it. */
@@ -11,6 +11,14 @@ export function UnlockForm() {
     unlock,
     { error: false },
   );
+
+  // Unlocked: load the case study as a fresh page. A soft navigation could
+  // reuse links the home page loaded in the background while the site was
+  // locked, which would show this page again. `replace` keeps the
+  // password page out of the back button's history.
+  useEffect(() => {
+    if (state.next) window.location.replace(state.next);
+  }, [state.next]);
 
   return (
     <form action={action} className="mt-10 max-w-md">
@@ -32,10 +40,10 @@ export function UnlockForm() {
         />
         <button
           type="submit"
-          disabled={pending}
+          disabled={pending || Boolean(state.next)}
           className="rounded-full bg-text px-6 py-3 font-normal text-bg transition-colors hover:bg-accent disabled:opacity-60"
         >
-          {pending ? "Checking…" : "Unlock"}
+          {state.next ? "Opening…" : pending ? "Checking…" : "Unlock"}
         </button>
       </div>
       <p

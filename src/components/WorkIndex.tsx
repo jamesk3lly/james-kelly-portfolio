@@ -75,8 +75,12 @@ export function WorkIndex({ work }: { work: Work[] }) {
                   </span>
                 </p>
                 <h3 className="mt-3 max-w-2xl font-display text-[clamp(1.375rem,1.05rem+1vw,2rem)] leading-[1.22] tracking-[-0.01em] text-balance">
+                  {/* No background loading: before the password is
+                      entered it would only fetch the password page, and the
+                      browser could reuse that after unlocking. */}
                   <Link
                     href={`/work/${item.slug}`}
+                    prefetch={false}
                     className="link-underline after:absolute after:inset-0"
                   >
                     <span className="sr-only">{item.number}. </span>
