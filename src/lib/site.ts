@@ -5,6 +5,14 @@ export const site = {
   url: "https://jameskelly.ie",
   email: "hello@jameskelly.ie",
   linkedin: "https://www.linkedin.com/in/james-kelly-ux/",
+  // Full profile links. Leave one empty ("") to hide it from the contact
+  // page, e.g. twitter: "https://x.com/yourhandle".
+  twitter: "",
+  instagram: "",
+  // Contact page photo: put the file in /public and give its path, e.g.
+  // "/james-kelly.jpg". Shown as a 4:5 portrait. Empty hides it.
+  photo: "",
+  photoAlt: "James Kelly",
   // To update the CV, replace public/james-kelly-cv.pdf (same filename).
   cv: "/james-kelly-cv.pdf",
   location: "Ireland",
@@ -16,4 +24,5 @@ export const site = {
 export const nav = [
   { href: "/#work", label: "Work" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ] as const;

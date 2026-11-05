@@ -15,7 +15,7 @@ export function NavLinks({ work }: { work: WorkMenuItem[] }) {
   const pathname = usePathname();
 
   return (
-    <ul className="flex items-center gap-5 text-[0.9375rem] sm:gap-8">
+    <ul className="flex items-center gap-3.5 text-[0.875rem] whitespace-nowrap min-[400px]:gap-5 sm:gap-8 sm:text-[0.9375rem]">
       {nav.map((item) => {
         // Work is "current" on case studies; the dropdown marks the page.
         if (item.href === "/#work")

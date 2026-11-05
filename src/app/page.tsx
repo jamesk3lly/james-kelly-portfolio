@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <>
       {/* Hero */}
-      <Container className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 lg:pt-28">
+      <Container className="relative pt-12 pb-16 sm:pt-20 sm:pb-20 lg:pt-24">
         {/* Hero artwork: turned off for now (too distracting). To bring the
             generative line art back, import HeroPattern from
             "@/components/HeroPattern" and add:
@@ -21,13 +21,13 @@ export default async function Home() {
         <div className="relative">
           <div className="max-w-6xl">
             <HeroHeadline text={hero.statement} />
-            <p className="hero-fade mt-8 max-w-2xl text-lede text-muted sm:mt-10">
+            <p className="hero-fade mt-6 max-w-2xl text-lede text-muted sm:mt-7">
               {hero.supporting}
             </p>
           </div>
         </div>
 
-        <dl className="hero-fade relative mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-rule pt-8 sm:mt-24 sm:grid-cols-3">
+        <dl className="hero-fade relative mt-10 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-rule pt-8 sm:mt-14 sm:grid-cols-3">
           {facts.map((fact) => (
             <div key={fact.label}>
               <dt className="text-label text-muted uppercase">{fact.label}</dt>
@@ -42,8 +42,24 @@ export default async function Home() {
       {/* Selected work */}
       <section aria-labelledby="work" className="pb-24 sm:pb-32">
         <Container>
-          <h2 id="work" className="scroll-mt-8 font-display text-heading">
+          <h2
+            id="work"
+            className="flex scroll-mt-8 items-center gap-[0.35em] font-display text-heading"
+          >
             Selected work
+            {/* A quiet pointer to the list below, like the Work menu's. */}
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 12 12"
+              className="size-[0.42em] translate-y-[0.08em] text-muted"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M2.5 4.5 6 8l3.5-3.5" />
+            </svg>
           </h2>
 
           <div className="mt-10 sm:mt-14">

@@ -43,7 +43,7 @@ export function HeroHeadline({ text }: { text: string }) {
 
   return (
     <>
-      <h1 id={ID} className="font-display text-display text-balance font-[360]">
+      <h1 id={ID} className="font-display text-hero text-balance font-[360]">
         {words.map((word, i) => (
           <span key={i}>
             <span className="hero-mask">
