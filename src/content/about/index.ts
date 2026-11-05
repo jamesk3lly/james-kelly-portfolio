@@ -5,6 +5,14 @@
 import irishType1 from "./irish-type-1.jpg";
 import irishType2 from "./irish-type-2.jpg";
 import irishType3 from "./irish-type-3.jpg";
+import portraitImage from "./portrait.jpg";
+
+// Shown small and round at the top of the page, tinted purple. To change
+// it, replace portrait.jpg (a square-ish photo, face near the middle).
+export const portrait = {
+  src: portraitImage,
+  alt: "James Kelly, smiling, in dark glasses and a dark jacket, in front of an embossed patterned wall.",
+};
 
 export const intro = {
   // One line on who you are.

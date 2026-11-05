@@ -298,6 +298,32 @@
   background-color: color-mix(in oklab, var(--tint) 16%, var(--bg));
 }
 
+/* About page portrait: a purple duotone. The photo is shown in greyscale
+   and the accent colour is screened over it, so its darks turn purple
+   and its lights stay pale. In dark mode the photo is dimmed a little so
+   it doesn't glare against the charcoal page. */
+.portrait img {
+  /* Extra contrast keeps the face defined under the tint. */
+  filter: grayscale(1) contrast(1.35) brightness(0.8);
+}
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--accent);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  pointer-events: none;
+}
+[data-theme="dark"] .portrait img {
+  filter: grayscale(1) contrast(1.05) brightness(0.8);
+}
+[data-theme="dark"] .portrait::after {
+  mix-blend-mode: multiply;
+  opacity: 1;
+}
+
 /* Work dropdown in the header (src/components/WorkMenu.tsx). A
    translucent panel that blurs the page behind it. It fades and drops in
    when opened, and its items follow one after another. Closed, it's

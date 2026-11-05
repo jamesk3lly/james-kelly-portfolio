@@ -7,8 +7,8 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/james-kelly-ux/",
   // Full profile links. Leave one empty ("") to hide it from the contact
   // page, e.g. twitter: "https://x.com/yourhandle".
-  twitter: "",
-  instagram: "",
+  twitter: "https://x.com/irishtypography",
+  instagram: "https://instagram.com/irishtype",
   // Contact page photo: put the file in /public and give its path, e.g.
   // "/james-kelly.jpg". Shown as a 4:5 portrait. Empty hides it.
   photo: "",

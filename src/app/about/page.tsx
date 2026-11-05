@@ -7,6 +7,7 @@ import {
   bio,
   education,
   intro,
+  portrait,
   irishType,
   principles,
   timeline,
@@ -53,6 +54,18 @@ export default function AboutPage() {
 
   return (
     <Container className="pt-12 pb-16 sm:pt-20 lg:pt-24">
+      {/* Portrait: small and round, in a purple duotone (see .portrait in
+          globals.css). */}
+      <div className="portrait relative mb-8 size-24 overflow-hidden rounded-full bg-surface sm:mb-10 sm:size-28">
+        <Image
+          src={portrait.src}
+          alt={portrait.alt}
+          placeholder="blur"
+          priority
+          sizes="112px"
+          className="size-full object-cover"
+        />
+      </div>
       <p className="text-label text-muted uppercase">About</p>
       <h1 className="mt-4 max-w-5xl font-display text-title text-balance">
         {intro.heading}
