@@ -10,6 +10,19 @@ const INTERACTIVE = "a[href], button, [role='button'], label, summary, select";
 const TEXT =
   "h1, h2, h3, h4, h5, h6, p, dt, dd, figcaption, blockquote, time, td, th";
 
+// The corner radius of the frame that clips an image: the nearest
+// ancestor (a few levels up) that hides overflow and has rounded corners.
+function frameRadius(img: HTMLImageElement) {
+  let el: Element | null = img;
+  for (let i = 0; i < 4 && el; i++, el = el.parentElement) {
+    const cs = getComputedStyle(el);
+    const rounded = cs.borderRadius && cs.borderRadius !== "0px";
+    if (rounded && (el === img || cs.overflow !== "visible"))
+      return cs.borderRadius;
+  }
+  return "";
+}
+
 /**
  * A circular cursor that replaces the system pointer on mouse and trackpad
  * devices: a soft purple circle with a fine purple outline that eases after
@@ -109,8 +122,16 @@ export function CustomCursor() {
       for (const img of document.images) {
         if (img.closest(".custom-cursor")) continue;
         const r = img.getBoundingClientRect();
-        if (px >= r.left && px <= r.right && py >= r.top && py <= r.bottom)
-          return img;
+        if (px < r.left || px > r.right || py < r.top || py > r.bottom)
+          continue;
+        // A round image (the About portrait) only counts inside its circle.
+        const radius = parseFloat(frameRadius(img)) || 0;
+        if (radius >= Math.min(r.width, r.height) / 2) {
+          const nx = (px - (r.left + r.width / 2)) / (r.width / 2);
+          const ny = (py - (r.top + r.height / 2)) / (r.height / 2);
+          if (nx * nx + ny * ny > 1) continue;
+        }
+        return img;
       }
       return null;
     };
@@ -189,6 +210,10 @@ export function CustomCursor() {
         clone.removeAttribute("sizes");
         clone.loading = "eager";
         clone.src = next.currentSrc || next.src;
+        // Many images are shaped by a frame around them (the round About
+        // portrait, the rounded card images). The copy is just the image,
+        // so give it the frame's corners too.
+        clone.style.borderRadius = frameRadius(next);
       }
       // Keep inherited text styles, size and layout identical.
       Object.assign(clone.style, {
